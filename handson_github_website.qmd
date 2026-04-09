@@ -1,13 +1,5 @@
 ---
 title: "Using the GitHub website"
-author:
-  - name: Julien Brun
-    url: https://brunj7.github.io/
-    orcid: 0000-0002-7751-6238
-date: last-modified
-citation: 
-  url: https://ucsb-library-research-data-services.github.io/github-4everyone/
-categories: [git, github, version-control, reproducible-science]
 ---
 
 In this section, we will be using the GitHub.com website and demonstrate that you do not need to be a programmer to use version control and edit files on GitHub.

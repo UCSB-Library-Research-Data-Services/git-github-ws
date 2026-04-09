@@ -17,7 +17,9 @@ website:
       - href: github_intro.qmd
         text: "Our tools: git & GitHub"
       - href: handson_github_website.qmd
-        text: "All you can do with GitHub website"
+        text: "GitHub"
+      - href: git_basics.qmd
+        text: "Git"
       - href: git_further_readings.qmd
         text: "Git and GitHub further readings"
       - href: about.qmd
