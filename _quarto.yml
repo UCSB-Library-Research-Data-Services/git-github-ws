@@ -1,0 +1,41 @@
+project:
+  type: website
+
+execute:
+  freeze: true
+  
+website:
+  title: "GitHub for Everyone"
+  page-navigation: true
+  search: 
+    location: navbar
+    
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: github_intro.qmd
+        text: "Our tools: git & GitHub"
+      - href: handson_github_website.qmd
+        text: "All you can do with GitHub website"
+      - href: git_further_readings.qmd
+        text: "Git and GitHub further readings"
+      - href: about.qmd
+        text: "About RDS"
+    tools:
+      - icon: github
+        menu:
+          - text: Website Code
+            url:  https://github.com/UCSB-Library-Research-Data-Services/github-4everyone
+          - text: Report an issue
+            url:  https://github.com/UCSB-Library-Research-Data-Services/github-4everyone/issues
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - rdsstyles.scss
+    toc: true
+    include-after-body: _footer.html
+
+
