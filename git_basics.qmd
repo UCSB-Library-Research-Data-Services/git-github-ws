@@ -18,7 +18,7 @@ This session will cover:
 
 `MacOSX` and `Linux` computers all come with git pre-installed, but it is not always directly usable. The best way to test if `git` is ready to use is at the command line:
 
-```{bash git test, eval=FALSE}
+```bash
 git --version
 # git version 2.39.3
 ```
@@ -53,13 +53,13 @@ Open the `Terminal` or `git bash` and then type the following commands.
 
 If you are not sure if you have already set your git identity you can check this running this command:
 
-```{bash git config list, eval=FALSE}
+```bash
 git config --global --list
 ```
 
 If you identity is not set yet, you need to provide your name and email (we recommend to use the same email as used when setting your GitHub account): 
 
-```{bash git identity, eval=FALSE}
+```bash
 git config --global user.name "your Full Name"
 git config --global user.email "your Email"
 ```
@@ -69,19 +69,19 @@ git config --global user.email "your Email"
 
 Check that everything is correct: 
 
-```{bash git config check, eval=FALSE}
+```bash
 git config --global --list
 ```
 
 Modify everything at the same time:
 
-```{bash git config edit, eval=FALSE}
+```bash
 git config --global --edit
 ```
 
 Set your text editor: 
 
-```{bash git config editor, eval=FALSE}
+```bash
 git config --system core.editor nano
 ```
 
