@@ -166,10 +166,7 @@ git push
 
 Refresh the repository webpage, you should now see the `index.md` file!
 
-
-
 <hr>
-
 
 ### Fork Workflow
 
