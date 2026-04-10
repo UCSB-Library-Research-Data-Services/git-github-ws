@@ -14,10 +14,9 @@ If you have not already created a GitHub username, please do so now:
 :::
 
 
-## Collaborator Workflow
+
 
 ::: {.callout-tip}
-
 ### Our asks
 
 ### As a Team of two
@@ -29,18 +28,20 @@ If you have not already created a GitHub username, please do so now:
 
 ### Prompt
 
-We want to log the information about people's favorite desserts using a repository.
-
+We want to log the information about people's favorite desserts using this repository.
 :::
 
 
-#### Person 1 (owner):
+## Create a new repository
 
 - Create a repository using the following  [instructions](https://docs.github.com/en/github/getting-started-with-github/create-a-repo) steps 1-6
 
 ![](img/github-dessert-repo.png)
 
-- Edit the README to:
+## Edit the README
+
+We want to make the following changes: 
+
    - Replace the title (first line starting with `#`) with something better! Maybe `Favorite Desserts`
    - Add your name and your favorite dessert below the title: e.g.  ` - Julien: crepes`
 
@@ -48,23 +49,13 @@ We want to log the information about people's favorite desserts using a reposito
 knitr::include_graphics("img/github-readme_desserts.png")
 ```
 
-- Add Person 2 as a collaborator following these [instructions](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)
+- Ask your partner what is their favorite desserts and add it to the list
+- Think of a relative and their potential favorite desserts and add it to the list; e.g.  ` - Sophia: chocolate`
 
+## Commit your changes
 
-#### Person 2 (collaborator): 
-
-- Check your email to accept the invitation
-- Go to the repository website (link is provided in the invitation)
-- Start editing the `README.md` by clicking on the pen at the top of the README.md file to edit it
-
-```{r echo=FALSE}
-knitr::include_graphics("img/github-readme-edit.png")
-```
-
-- Add your name and your favorite dessert below the title: e.g.  ` - Sophia: chocolate`
 - Click _Commit changes_
 - Add a descriptive commit message, "add my favorite dessert"
-
 
 ```{r echo=FALSE}
 knitr::include_graphics("img/github-commit.png")
@@ -77,7 +68,7 @@ knitr::include_graphics("img/github-commit-button.png")
 ```
 
 
-#### Person 1: add a csv file
+## Add a csv file
 
 Download this [csv file](https://raw.githubusercontent.com/brunj7/eds214-handson-ghcollab/main/data/iconic_desserts.csv) about the most iconic desserts in America (according to this website <https://www.eatthis.com/iconic-desserts-united-states/>) to your computer. Note: depending on your web browser settings you might have to right-click on the page and select _Save As_.
 
@@ -88,7 +79,7 @@ Download this [csv file](https://raw.githubusercontent.com/brunj7/eds214-handson
 You should have something similar to this repo: <https://github.com/brunj7/favorite-desserts>
 
 
-#### Person 2: add an R script
+## Add an R script
 
 This is the script we used to scrape the iconic desserts listing: 
 
@@ -123,60 +114,9 @@ How would you add this code as an R Script to your repository?
 
 ### Bonus 
 
-Person 2: Try to edit the csv file directly on GitHub to add your favorite dessert to the iconic list! 
+- Try to edit the csv file directly on GitHub to add your favorite dessert to the iconic list! 
 
-Person 1: Your turn!
 
 ***No need to be a programmer to contribute to analytical workflows with GitHub!!***
 
 
-<hr>
-
-
-### Fork Workflow
-
-If you want to contribute to a repository that you have not been added to as a collaborator, you need to first fork the repository. This creates a linked copy under your username that you can edit. Once you are done with your contribution, you can send a request to incorporate your changes to the original repository using what is called a Pull Request, in other words, you ask the repository owner to pull your changes into their repository.
-
-
-::: {.callout-tip}
-
-### Our ask
-
-
-
-
-### Prompt
-
-With **another** collaborator keep logging information about people's favorite desserts using the fork workflow.
-
-:::
-
-#### Person 2: Create a Fork of the person 1 repository
-
-- Get the link the repository from Person 1 via the Zoom chat
-- Go to their repository webpage
-- Create a Fork by clicking on the Fork button on the top right view of your repository homepage
-
-```{r fork-button, out.width="60%", echo=FALSE}
-knitr::include_graphics("img/github-fork-button.png")
-```
-
-- On your Fork, start editing the `README.md` 
-- Add the name of a friend and their favorite dessert below your previous entries: e.g.  ` - Eliott: donut`
-- Add a descriptive commit message
-
-```{r echo=FALSE}
-knitr::include_graphics("img/github-commit.png")
-```
-
-- Commit your changes
-
-```{r commit-button2, out.width="20%", echo=FALSE}
-knitr::include_graphics("img/github-commit-button.png")
-```
-- Create a Pull Request (PR) to merge those changes to the main repository using these [instructions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
-
-
-#### Person 1:
-
-- Go to *your* repository and merge the PR
