@@ -5,7 +5,7 @@ execute:
   freeze: true
   
 website:
-  title: "GitHub for Everyone"
+  title: "Version control with git and GitHub"
   page-navigation: true
   search: 
     location: navbar
