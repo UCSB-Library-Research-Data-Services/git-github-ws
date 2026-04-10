@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/github_intro.html</loc>
-    <lastmod>2026-04-10T20:35:21.363Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/handson_github_website.html</loc>
-    <lastmod>2026-04-10T20:35:21.363Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/about.html</loc>
-    <lastmod>2026-04-10T20:35:21.363Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/git_further_readings.html</loc>
-    <lastmod>2026-04-10T20:35:21.363Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/git_basics.html</loc>
-    <lastmod>2026-04-10T20:35:21.363Z</lastmod>
+    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/github_collab.html</loc>
+    <lastmod>2026-04-10T20:48:06.336Z</lastmod>
   </url>
   <url>
     <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/index.html</loc>
-    <lastmod>2026-04-10T20:35:21.410Z</lastmod>
+    <lastmod>2026-04-10T20:48:06.380Z</lastmod>
   </url>
   <url>
-    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/github_collab.html</loc>
-    <lastmod>2026-04-10T20:35:21.363Z</lastmod>
+    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/git_basics.html</loc>
+    <lastmod>2026-04-10T20:48:06.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/git_further_readings.html</loc>
+    <lastmod>2026-04-10T20:48:06.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/version_control.html</loc>
+    <lastmod>2026-04-10T20:48:06.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/about.html</loc>
+    <lastmod>2026-04-10T20:48:06.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UCSB-Library-Research-Data-Services.github.io/git-github-ws/handson_github_website.html</loc>
+    <lastmod>2026-04-10T20:48:06.336Z</lastmod>
   </url>
 </urlset>

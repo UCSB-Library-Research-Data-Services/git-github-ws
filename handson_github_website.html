@@ -6,8 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Julien Brun">
-<meta name="dcterms.date" content="2026-04-10">
 
 <title>Using the GitHub website – GitHub for Everyone</title>
 <style>
@@ -132,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./github_intro.html"> 
+    <a class="nav-link" href="./version_control.html"> 
 <span class="menu-text">Version Control</span></a>
   </li>  
   <li class="nav-item">
@@ -182,10 +180,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#collaborator-workflow" id="toc-collaborator-workflow" class="nav-link active" data-scroll-target="#collaborator-workflow">Collaborator Workflow</a>
+  <li><a href="#create-a-new-repository" id="toc-create-a-new-repository" class="nav-link active" data-scroll-target="#create-a-new-repository">Create a new repository</a></li>
+  <li><a href="#edit-the-readme" id="toc-edit-the-readme" class="nav-link" data-scroll-target="#edit-the-readme">Edit the README</a></li>
+  <li><a href="#commit-your-changes" id="toc-commit-your-changes" class="nav-link" data-scroll-target="#commit-your-changes">Commit your changes</a></li>
+  <li><a href="#add-a-csv-file" id="toc-add-a-csv-file" class="nav-link" data-scroll-target="#add-a-csv-file">Add a csv file</a></li>
+  <li><a href="#add-an-r-script" id="toc-add-an-r-script" class="nav-link" data-scroll-target="#add-an-r-script">Add an R script</a>
   <ul class="collapse">
   <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">Bonus</a></li>
-  <li><a href="#fork-workflow" id="toc-fork-workflow" class="nav-link" data-scroll-target="#fork-workflow">Fork Workflow</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,19 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p><a href="https://brunj7.github.io/">Julien Brun</a> <a href="https://orcid.org/0000-0002-7751-6238" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 10, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -245,8 +234,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="collaborator-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="collaborator-workflow">Collaborator Workflow</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -267,22 +254,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="prompt" class="level3">
 <h3 class="anchored" data-anchor-id="prompt">Prompt</h3>
-<p>We want to log the information about people’s favorite desserts using a repository.</p>
+<p>We want to log the information about people’s favorite desserts using this repository.</p>
 </section>
 </div>
 </div>
-<section id="person-1-owner" class="level4">
-<h4 class="anchored" data-anchor-id="person-1-owner">Person 1 (owner):</h4>
+<section id="create-a-new-repository" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-repository">Create a new repository</h2>
 <ul>
 <li>Create a repository using the following <a href="https://docs.github.com/en/github/getting-started-with-github/create-a-repo">instructions</a> steps 1-6</li>
 </ul>
 <p><img src="img/github-dessert-repo.png" class="img-fluid"></p>
-<ul>
-<li>Edit the README to:
+</section>
+<section id="edit-the-readme" class="level2">
+<h2 class="anchored" data-anchor-id="edit-the-readme">Edit the README</h2>
+<p>We want to make the following changes:</p>
 <ul>
 <li>Replace the title (first line starting with <code>#</code>) with something better! Maybe <code>Favorite Desserts</code></li>
 <li>Add your name and your favorite dessert below the title: e.g.&nbsp;<code>- Julien: crepes</code></li>
-</ul></li>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
@@ -294,27 +282,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li>Add Person 2 as a collaborator following these <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository">instructions</a></li>
+<li>Ask your partner what is their favorite desserts and add it to the list</li>
+<li>Think of a relative and their potential favorite desserts and add it to the list; e.g.&nbsp;<code>- Sophia: chocolate</code></li>
 </ul>
 </section>
-<section id="person-2-collaborator" class="level4">
-<h4 class="anchored" data-anchor-id="person-2-collaborator">Person 2 (collaborator):</h4>
+<section id="commit-your-changes" class="level2">
+<h2 class="anchored" data-anchor-id="commit-your-changes">Commit your changes</h2>
 <ul>
-<li>Check your email to accept the invitation</li>
-<li>Go to the repository website (link is provided in the invitation)</li>
-<li>Start editing the <code>README.md</code> by clicking on the pen at the top of the README.md file to edit it</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/github-readme-edit.png" class="img-fluid figure-img" width="556"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>Add your name and your favorite dessert below the title: e.g.&nbsp;<code>- Sophia: chocolate</code></li>
 <li>Click <em>Commit changes</em></li>
 <li>Add a descriptive commit message, “add my favorite dessert”</li>
 </ul>
@@ -340,8 +314,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="person-1-add-a-csv-file" class="level4">
-<h4 class="anchored" data-anchor-id="person-1-add-a-csv-file">Person 1: add a csv file</h4>
+<section id="add-a-csv-file" class="level2">
+<h2 class="anchored" data-anchor-id="add-a-csv-file">Add a csv file</h2>
 <p>Download this <a href="https://raw.githubusercontent.com/brunj7/eds214-handson-ghcollab/main/data/iconic_desserts.csv">csv file</a> about the most iconic desserts in America (according to this website <a href="https://www.eatthis.com/iconic-desserts-united-states/" class="uri">https://www.eatthis.com/iconic-desserts-united-states/</a>) to your computer. Note: depending on your web browser settings you might have to right-click on the page and select <em>Save As</em>.</p>
 <ul>
 <li>Drag and drop it on the Github web page of your repository to upload it</li>
@@ -350,8 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>You should have something similar to this repo: <a href="https://github.com/brunj7/favorite-desserts" class="uri">https://github.com/brunj7/favorite-desserts</a></p>
 </section>
-<section id="person-2-add-an-r-script" class="level4">
-<h4 class="anchored" data-anchor-id="person-2-add-an-r-script">Person 2: add an R script</h4>
+<section id="add-an-r-script" class="level2">
+<h2 class="anchored" data-anchor-id="add-an-r-script">Add an R script</h2>
 <p>This is the script we used to scrape the iconic desserts listing:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -379,85 +353,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Save the file as <code>iconic_desserts.R</code></li>
 <li>Drag and drop it on the Github web page of your repository</li>
 </ul>
-</section>
 <section id="bonus" class="level3">
 <h3 class="anchored" data-anchor-id="bonus">Bonus</h3>
-<p>Person 2: Try to edit the csv file directly on GitHub to add your favorite dessert to the iconic list!</p>
-<p>Person 1: Your turn!</p>
+<ul>
+<li>Try to edit the csv file directly on GitHub to add your favorite dessert to the iconic list!</li>
+</ul>
 <p><strong><em>No need to be a programmer to contribute to analytical workflows with GitHub!!</em></strong></p>
-<hr>
-</section>
-<section id="fork-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="fork-workflow">Fork Workflow</h3>
-<p>If you want to contribute to a repository that you have not been added to as a collaborator, you need to first fork the repository. This creates a linked copy under your username that you can edit. Once you are done with your contribution, you can send a request to incorporate your changes to the original repository using what is called a Pull Request, in other words, you ask the repository owner to pull your changes into their repository.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Our ask
-</div>
-</div>
-<section id="prompt-1" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="prompt-1">Prompt</h3>
-<p>With <strong>another</strong> collaborator keep logging information about people’s favorite desserts using the fork workflow.</p>
-</section>
-</div>
-<section id="person-2-create-a-fork-of-the-person-1-repository" class="level4">
-<h4 class="anchored" data-anchor-id="person-2-create-a-fork-of-the-person-1-repository">Person 2: Create a Fork of the person 1 repository</h4>
-<ul>
-<li>Get the link the repository from Person 1 via the Zoom chat</li>
-<li>Go to their repository webpage</li>
-<li>Create a Fork by clicking on the Fork button on the top right view of your repository homepage</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/github-fork-button.png" class="img-fluid figure-img" style="width:60.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>On your Fork, start editing the <code>README.md</code></li>
-<li>Add the name of a friend and their favorite dessert below your previous entries: e.g.&nbsp;<code>- Eliott: donut</code></li>
-<li>Add a descriptive commit message</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/github-commit.png" class="img-fluid figure-img" width="531"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>Commit your changes</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="img/github-commit-button.png" class="img-fluid figure-img" style="width:20.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>Create a Pull Request (PR) to merge those changes to the main repository using these <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">instructions</a></li>
-</ul>
-</section>
-<section id="person-1" class="level4">
-<h4 class="anchored" data-anchor-id="person-1">Person 1:</h4>
-<ul>
-<li>Go to <em>your</em> repository and merge the PR</li>
-</ul>
 
 
-</section>
 </section>
 </section>
 
