@@ -20,8 +20,10 @@ website:
         text: "GitHub"
       - href: git_basics.qmd
         text: "Git"
+      - href: github_collab.qmd
+        text: "Code Sharing"
       - href: git_further_readings.qmd
-        text: "Git and GitHub further readings"
+        text: "Further readings"
       - href: about.qmd
         text: "About RDS"
     tools:
