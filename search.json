@@ -179,7 +179,7 @@
     "href": "index.html#session-overview",
     "title": "Introduction to git & GitHub",
     "section": "Session Overview",
-    "text": "Session Overview\n\nWhat is version control\nHow to leverage git in your work\nCollaborative coding with GitHub\nWorking on your local machine\nSharing your code with GitHub"
+    "text": "Session Overview\n\nWhat is version control\nCollaborative coding with GitHub\n\nCreate a repository\nClone it to your machine\n\nHow to leverage git in your work\n\nSet up your identity\nBasic git workflow\n\nWorking on your local machine\nSharing your code with GitHub"
   },
   {
     "objectID": "github_collab.html",
