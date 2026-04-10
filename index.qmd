@@ -14,8 +14,12 @@ title: "Introduction to git & GitHub"
 ## Session Overview
 
 - What is version control
-- How to leverage `git` in your work
 - Collaborative coding with `GitHub`
+  - Create a repository
+  - Clone it to your machine
+- How to leverage `git` in your work
+  - Set up your identity
+  - Basic git workflow
 - Working on your local machine
 - Sharing your code with `GitHub`
 
