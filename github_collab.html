@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Collaborating with GitHub – GitHub for Everyone</title>
+<title>Collaborating with GitHub – Version control with git and GitHub</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">GitHub for Everyone</span>
+    <span class="navbar-title">Version control with git and GitHub</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -184,8 +184,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sending-changes-back-to-github" id="toc-sending-changes-back-to-github" class="nav-link active" data-scroll-target="#sending-changes-back-to-github">Sending changes back to GitHub</a>
+  <li><a href="#sending-changes-back-to-github" id="toc-sending-changes-back-to-github" class="nav-link active" data-scroll-target="#sending-changes-back-to-github">Sending changes back to GitHub</a></li>
+  <li><a href="#github-credentials" id="toc-github-credentials" class="nav-link" data-scroll-target="#github-credentials">GitHub credentials</a>
   <ul class="collapse">
+  <li><a href="#setting-up-your-github-token" id="toc-setting-up-your-github-token" class="nav-link" data-scroll-target="#setting-up-your-github-token">Setting up your GitHub Token</a></li>
+  <li><a href="#setting-up-your-ssh-key" id="toc-setting-up-your-ssh-key" class="nav-link" data-scroll-target="#setting-up-your-ssh-key">Setting up your SSH key</a></li>
   <li><a href="#fork-workflow" id="toc-fork-workflow" class="nav-link" data-scroll-target="#fork-workflow">Fork Workflow</a></li>
   </ul></li>
   <li><a href="#aknowledgements" id="toc-aknowledgements" class="nav-link" data-scroll-target="#aknowledgements">Aknowledgements</a></li>
@@ -227,13 +230,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>pull</code></li>
 <li><code>push</code></li>
 </ol>
+</section>
+<section id="github-credentials" class="level2">
+<h2 class="anchored" data-anchor-id="github-credentials">GitHub credentials</h2>
+<p>Normally if you have already used GitHub tokens your Operating System (Windows, MacOSX, …) should have cached the necessary credentials to log in to your GitHub account (necessary to be able to push (write) content to the remote repository).</p>
+<section id="setting-up-your-github-token" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-your-github-token">Setting up your GitHub Token</h3>
+<p>You can find the latest guidelines on how to setup your personal GitHub token <strong><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic">here</a></strong></p>
+<ol type="1">
+<li><p>Choose a token name that is related to the machine you are using (not requires, but a good idea :) )</p></li>
+<li><p>Set the expiration date to <code>90 days</code></p></li>
+<li><p>We recommend to select the following options:</p>
+<ul>
+<li>all repo actions</li>
+<li>workflow</li>
+<li>gist</li>
+<li>all user actions</li>
+</ul>
+<p><img src="img/github-token.png" class="img-fluid" style="width:65.0%"></p></li>
+<li><p>Then click the <code>Generate token</code> button at the bottom of the page.</p></li>
+</ol>
+<p><strong>DO NOT CLOSE the next page</strong> as it will be the only time you can see your token.</p>
+<p>Copy your token to your clipboard and then push to GitHub from the command line using <code>git push</code>. When you are prompted for your password, copy your token.</p>
+<p>Only once it has worked and that your token as been cached by your OS password manager you can close the GitHub webpage displaying your token value.</p>
+</section>
+<section id="setting-up-your-ssh-key" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-your-ssh-key">Setting up your SSH key</h3>
+<p>Another option is to set up the method that is commonly used by many different services to authenticate access on the command line. This method is called Secure Shell Protocol (SSH). SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.</p>
+<p>SSH uses what is called a key pair. This is <strong>two</strong> keys that work together to validate access. One key is publicly known and called the <strong>public key</strong>, and the other key called the <strong>private key</strong> is kept private. Very descriptive names.</p>
+<p>You can think of the public key as a padlock, and only you have the key (the private key) to open it. You use the public key where you want a secure method of communication, such as your GitHub account. You give this padlock, or public key, to GitHub and say “lock the communications to my account with this so that only computers that have my private key can unlock communications and send git commands as my GitHub account.”</p>
+<p>The first thing we are going to do is check if this has already been done on the computer you’re on. Because generally speaking, this setup only needs to happen once and then you can forget about it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> ~/.ssh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Your output is going to look a little different depending on whether or not SSH has ever been set up on the computer you are using.</p>
+<section id="already-set-up" class="level4">
+<h4 class="anchored" data-anchor-id="already-set-up">Already set up:</h4>
+<p>If SSH has been set up on the computer you’re using, the public and private key pairs will be listed. The file names are either <code>id_ed25519</code>/<code>id_ed25519.pub</code> or <code>id_rsa</code>/<code>id_rsa.pub</code> depending on how the key pairs were set up.</p>
+</section>
+<section id="not-set-up" class="level4">
+<h4 class="anchored" data-anchor-id="not-set-up">Not Set up:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> cannot access <span class="st">'/Users/brunj7/.ssh'</span>: No such file or directory</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create an SSH key pair</p>
+<p>To create an SSH key pair Vlad uses this command, where the <code>-t</code> option specifies which type of algorithm to use and <code>-C</code> attaches a comment to the key (here, Vlad’s email):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"youremail@provider.org"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you are using a legacy system that doesn’t support the Ed25519 algorithm, use:</p>
+<p><code>$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code></p>
+<pre><code>Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/brunj7/.ssh/id_ed25519):</code></pre>
+<p>We want to use the default file, so just press <kbd>Enter</kbd>.</p>
+<pre class="output"><code>Created directory '/Users/brunj7/.ssh'.
+Enter passphrase (empty for no passphrase):</code></pre>
+<p>Now, it is prompting you for a passphrase. Be sure to use something memorable or save your passphrase somewhere, as there is no “reset my password” option.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you enter password at the shell, the keystrokes do not produce the usual “dot” showing you that you are typing, but your keystrokes are being registered… so keep typing you password !!</p>
+</div>
+</div>
+<pre><code>Enter same passphrase again:</code></pre>
+<p>After entering the same passphrase a second time, we receive the confirmation</p>
+<pre><code>Your identification has been saved in /Users/brunj7/.ssh/id_ed25519
+Your public key has been saved in /Users/brunj7/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o vlad@tran.sylvan.ia
+The key's randomart image is:
++--[ED25519 256]--+
+|^B== o.          |
+|%*=.*.+          |
+|+=.E =.+         |
+| .=.+.o..        |
+|....  . S        |
+|.+ o             |
+|+ =              |
+|.o.o             |
+|oo+.             |
++----[SHA256]-----+</code></pre>
+<p>The “identification” is actually the private key. You should never share it. The public key is appropriately named. The “key fingerprint” is a shorter version of a public key.</p>
+<p>Now that we have generated the SSH keys, we will find the SSH files when we check.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> ~/.ssh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 1 brunj7  staff 197121  Oct 23  13:14 ./</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 1 brunj7  staff 197121  Mar 11  09:21 ../</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-------</span> 1 brunj7  staff    464  Apr 21  2023 id_ed25519</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 brunj7  staff    103  Apr 21  2023 id_ed25519.pub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s do it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Normally nothing should have changed on the remote</p>
 <p>Now we can push our changes to GitHub:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Refresh the repository webpage, you should now see the <code>index.md</code> file!</p>
 <hr>
+</section>
+</section>
 <section id="fork-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="fork-workflow">Fork Workflow</h3>
 <p>If you want to contribute to a repository that you have not been added to as a collaborator, you need to first fork the repository. This creates a linked copy under your username that you can edit. Once you are done with your contribution, you can send a request to incorporate your changes to the original repository using what is called a Pull Request, in other words, you ask the repository owner to pull your changes into their repository.</p>
@@ -243,16 +336,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Our ask
+<span class="screen-reader-only">Tip</span>Prompt
 </div>
 </div>
-<section id="prompt" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="prompt">Prompt</h3>
+<div class="callout-body-container callout-body">
 <p>With <strong>another</strong> collaborator keep logging information about people’s favorite desserts using the fork workflow.</p>
-</section>
+</div>
 </div>
 <section id="person-2-create-a-fork-of-the-person-1-repository" class="level4">
-<h4 class="anchored" data-anchor-id="person-2-create-a-fork-of-the-person-1-repository">Person 2: Create a Fork of the person 1 repository</h4>
+<h4 class="anchored" data-anchor-id="person-2-create-a-fork-of-the-person-1-repository">Person 2: Create a Fork of the Person 1 repository</h4>
 <ul>
 <li>Get the link the repository from Person 1 via the Zoom chat</li>
 <li>Go to their repository webpage</li>
@@ -276,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="img/github-commit.png" class="img-fluid figure-img" width="531"></p>
+<p><img src="img/github-commit.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
