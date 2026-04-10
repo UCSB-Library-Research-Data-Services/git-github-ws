@@ -15,7 +15,7 @@ website:
       - href: index.qmd
         text: Home
       - href: github_intro.qmd
-        text: "Our tools: git & GitHub"
+        text: "Version Control"
       - href: handson_github_website.qmd
         text: "GitHub"
       - href: git_basics.qmd

@@ -1,15 +1,15 @@
 ---
-title: "git and GitHub"
+title: "Version Control with `git` and `GitHub`"
 ---
 
-# Version Control with `git` and `GitHub`
+
 
 Aka  --  **Say goodbye to  `script_JB_03v5b.R` !!**
 
 
 ## The problem with `save_as`
 
-```{r phd_comics_final, out.width='80%', fig.align="center",echo=FALSE}
+```{r phd_comics_final, out.width='80%', fig.align="center",echo=FALSE, fig.alt="cartoon showcasing an advisor and student exchanging versions of a manuscript"}
 knitr::include_graphics("img/phd_comics_final.png")
 ```
 
@@ -23,7 +23,7 @@ Version control systems help you track all of the changes to your files, without
     - git creates a timeline or history of your files
 - __GitHub__: is a code repository in the cloud that enables users to store their git repositories and share them with others. Github also adds many features to manage projects and document your work.
 
-<img style="float: right;width: 90px;" src="img/git_icon.png">
+<img style="float: right;width: 90px;" src="img/git_icon.png" alt="git logo">
 
 ## git 
 
@@ -52,12 +52,12 @@ Git can be enabled on a specific folder/directory on your file system to version
 
 Although there are many ways to start a new repository, [GitHub](https://github.com/) (or any other cloud solutions, such as [GitLab](https://about.gitlab.com/)) provide among the most convenient way of starting a repository.
 
-<img style="float: right;width: 100px;" src="img/github-logo.png">
+<img style="float: right;width: 100px;" src="img/github-logo.png" alt="GitHub logo">
 
 
 ## GitHub  
 	
-**GitHub is a company that hosts git repositories online** and provides several collaboration features (among which `forking`). GitHub fosters a great user community and has built a nice web interface to git, also adding great visualization/rendering capacities of your data. It is like a coding social platform for ~~nerds~~  ALL 
+**GitHub is a company (owned by Microsoft) that hosts git repositories online** and provides several collaboration features (among which `forking`). GitHub fosters a great user community and has built a nice web interface to git, also adding great visualization/rendering capacities of your data. It is like a coding social platform for ~~nerds~~  ALL 
 
 A few highlights of what you can do with GitHub:
 
@@ -72,14 +72,14 @@ A few highlights of what you can do with GitHub:
 
 This is the default landing page when you log into your account. It provides a mix of the most recent resources and activities of your and your collaborators' actions, as well as some resources relevant to your work. The dashboard therefore changes on a regular basis. Once logged in, you can access your dashboard at <https://github.com>
 
-![](img/github_overview-01_dashboard.png)
+![GitHub dasboard view](img/github_overview-01_dashboard.png)
 
 
 ### GitHub User page
 
 This page can be reached using the following URL: https://github.com/`username`. For my user (`brunj7`) it would be: <https://github.com/brunj7>. It is a great space for you to provide some information about yourself and the main repositories you are working on. It also lists the GitHub Organizations you are part of. But more importantly, Users own repositories to host and share their code. You can list repositories from a User by clicking on the _repositories_ tab in the main GitHub menu bar at the top.
 
-![](img/github_overview-02_user.png)
+![GitHub user profile view](img/github_overview-02_user.png)
 
 
 ### GitHub Organization page
@@ -87,7 +87,7 @@ This page can be reached using the following URL: https://github.com/`username`.
 We will talk more about GitHub Organizations later. In a nutshell, organizations are like groups or teams that users can be members of. Like Users, Organizations can have a landing page and own repositories. However, they add several perks in terms of user management. Similarly to Users, you can access repositories from an Organization by clicking on the _repositories_ tab in the main GitHub menu bar at the top. You can access an organization's page similarly to a user: https://github.com/`organization-name`; e.g.  <https://github.com/UCSB-Library-Research-Data-Services>
 
 
-![](img/github_overview-03_organization.png){fig-align="center" width=90%}
+![GitHub organization view](img/github_overview-03_organization.png){fig-align="center" width=90%}
 
 
 ### Let's look at a repository on GitHub
@@ -96,19 +96,19 @@ This screen shows the copy of a repository stored on GitHub,
 with its <span style="color:red">list of files</span>, <span style="color:green">when the files and directories were last modified</span>, 
 and <span style="color:blue">some information on who made the most recent changes.</span>  
 
-![](img/ss3sim-github_colored.png){fig-align="center" width=80%}
+![GitHub reposiotry view](img/ss3sim-github_colored.png){fig-align="center" width=80%}
 
 If we drill into the 
 "<span style="color:orange">commits</span>" for the repository, we can see the history of changes made to all of 
 the files.  Looks like `kellijohnson` and `seananderson` were fixing things in
 June and July:
 
-![](img/ss3sim-commits_colored.png){fig-align="center" width=80%}
+![GitHub reposiotry history](img/ss3sim-commits_colored.png){fig-align="center" width=80%}
 
 And finally, if we drill into the changes made on June 13, we can see exactly what
 was changed in each file:
 
-![](img/ss3sim-diff.png){fig-align="center" width=80%}
+![GitHub diff changes between versions](img/ss3sim-diff.png){fig-align="center" width=80%}
 
 Tracking these changes, and seeing how they relate to released versions of software and files
 is exactly what Git and GitHub are good for. We will show how they can really 
