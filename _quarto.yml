@@ -14,7 +14,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: github_intro.qmd
+      - href: version_control.qmd
         text: "Version Control"
       - href: handson_github_website.qmd
         text: "GitHub"
