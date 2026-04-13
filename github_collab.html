@@ -188,7 +188,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#github-credentials" id="toc-github-credentials" class="nav-link" data-scroll-target="#github-credentials">GitHub credentials</a>
   <ul class="collapse">
   <li><a href="#setting-up-your-github-token" id="toc-setting-up-your-github-token" class="nav-link" data-scroll-target="#setting-up-your-github-token">Setting up your GitHub Token</a></li>
-  <li><a href="#setting-up-your-ssh-key" id="toc-setting-up-your-ssh-key" class="nav-link" data-scroll-target="#setting-up-your-ssh-key">Setting up your SSH key</a></li>
   <li><a href="#fork-workflow" id="toc-fork-workflow" class="nav-link" data-scroll-target="#fork-workflow">Fork Workflow</a></li>
   </ul></li>
   <li><a href="#aknowledgements" id="toc-aknowledgements" class="nav-link" data-scroll-target="#aknowledgements">Aknowledgements</a></li>
@@ -253,11 +252,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>DO NOT CLOSE the next page</strong> as it will be the only time you can see your token.</p>
 <p>Copy your token to your clipboard and then push to GitHub from the command line using <code>git push</code>. When you are prompted for your password, copy your token.</p>
 <p>Only once it has worked and that your token as been cached by your OS password manager you can close the GitHub webpage displaying your token value.</p>
-</section>
-<section id="setting-up-your-ssh-key" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-your-ssh-key">Setting up your SSH key</h3>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Connect to GitHub with SSH
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Another option is to set up the method that is commonly used by many different services to authenticate access on the command line. This method is called Secure Shell Protocol (SSH). SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.</p>
 <p>SSH uses what is called a key pair. This is <strong>two</strong> keys that work together to validate access. One key is publicly known and called the <strong>public key</strong>, and the other key called the <strong>private key</strong> is kept private. Very descriptive names.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://y.yarn.co/334b0981-12e6-4a7e-b9a5-9cfd12123d06_text.gif" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>SSH key pair</figcaption>
+</figure>
+</div>
 <p>You can think of the public key as a padlock, and only you have the key (the private key) to open it. You use the public key where you want a secure method of communication, such as your GitHub account. You give this padlock, or public key, to GitHub and say “lock the communications to my account with this so that only computers that have my private key can unlock communications and send git commands as my GitHub account.”</p>
 <p>The first thing we are going to do is check if this has already been done on the computer you’re on. Because generally speaking, this setup only needs to happen once and then you can forget about it:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> ~/.ssh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -318,6 +332,10 @@ The key's randomart image is:
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 1 brunj7  staff 197121  Mar 11  09:21 ../</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-------</span> 1 brunj7  staff    464  Apr 21  2023 id_ed25519</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 brunj7  staff    103  Apr 21  2023 id_ed25519.pub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</div>
+</div>
+</div>
 <p>Let’s do it:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Normally nothing should have changed on the remote</p>
@@ -325,7 +343,6 @@ The key's randomart image is:
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Refresh the repository webpage, you should now see the <code>index.md</code> file!</p>
 <hr>
-</section>
 </section>
 <section id="fork-workflow" class="level3">
 <h3 class="anchored" data-anchor-id="fork-workflow">Fork Workflow</h3>
