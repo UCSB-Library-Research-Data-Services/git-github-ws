@@ -28,7 +28,7 @@ It should return something like above. **If you get an error, you will have to i
 
 ## Installing git
 
-You can download and install `git` from here: https://git-scm.com/install/ and follow the instructions according to your Operating System. 
+You can download and install `git` from here: [https://git-scm.com/install/](){target="_blank"} and follow the instructions according to your Operating System. 
 
 Depending on your OS, you might have to follow different steps to install `git` on your computer:
 
@@ -36,7 +36,6 @@ Depending on your OS, you might have to follow different steps to install `git` 
 ## {{< bi windows >}} Windows
 
 You can keep the options to default during the installation, until you reach `Configuring the terminal emulator to use with Git Bash` -> be sure `Use MinTTY` is selected.  This will install both git and a set of useful command-line tools using a trimmed down Bash shell. 
-
 
 ## {{< bi apple >}} Mac OSX 
 
@@ -88,7 +87,7 @@ Set your text editor:
 git config --system core.editor nano
 ```
 
-Here [`nano`](https://www.nano-editor.org) is used as example; you can choose most of the text editor you might have installed on your computer (atom, sublime, notepad++ ...).
+Here [`nano`](https://www.nano-editor.org){target="_blank"} is used as example; you can choose most of the text editor you might have installed on your computer (atom, sublime, notepad++ ...).
 
 ::: {.callout-tip}
 ## Text editor for Windows users
