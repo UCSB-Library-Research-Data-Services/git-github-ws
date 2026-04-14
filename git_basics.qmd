@@ -369,94 +369,85 @@ git commit -m "add Tiramisu to the list of iconic desserts"
 
 :::
 
+### Control the repository history
 
-
-## Exploring git history
-
-You can look at the history of what we've done so far:
+So far, we have made changes incrementally by adding and commiting new changes to the repository. However, we can also revert to a previous state of the repository. Let's explore the current history of our repository first by using the `log` command:
 
 ```bash
-$ git log
+git log
 ```
 
-It should look something like this:
-
-```output
-commit d11d7e52ab98d3d4c18cde4c4a0bbeea3fe40983 (HEAD -> main)
-Author: ...
-Date:   Thu Oct 19 12:07:51 2023 -0400
-
-    add Sophia
-
-commit 019f37773f9f18b77f508990df65e56a34df45de
-Author: ...
-Date:   Thu Oct 19 12:03:04 2023 -0400
-
-    start new webpage
-
-commit 8defaab26aa641a4233896ec68e603c541aa77b4
-Author: ...
-Date:   Thu Oct 19 12:01:17 2023 -0400
-
-    intial commit
-```
-
-### Paging the Log
-
-When the output of `git log` is too long to fit in your screen, `git` uses a program to split it into pages of the size of your screen.
-When this "pager" is called, you will notice that the last line in your screen is a `:`, instead of your usual prompt.
-
-- To get out of the pager, press <kbd>Q</kbd>.
-- To move to the next page, press <kbd>Spacebar</kbd>.
-- To search for `some_word` in all pages,
-  press <kbd>/</kbd>
-  and type `some_word`.
-  Navigate through matches pressing <kbd>N</kbd>.
-
-
-To avoid having `git log` cover your entire terminal screen, you can limit the
-number of commits that Git lists by using `-N`, where `N` is the number of
-commits that you want to view. For example, if you only want information from
-the last commit you can use:
+The output should look something like this:
 
 ```bash
-$ git log -1
-```
-
-```output
-commit d11d7e52ab98d3d4c18cde4c4a0bbeea3fe40983 (HEAD -> main)
+commit a3a7278bc511ac1047d722bb9833773fd5636a90 (HEAD -> main)
 Author: ...
-Date:   Thu Oct 19 12:07:51 2023 -0400
+Date:   Tue Apr 14 15:39:59 2026 -0700
 
-    add Sophia
+    add Tiramisu to the list of iconic desserts
+
+commit 227d6cba9fa442459bd4c22054fa640600db8cb4
+Author: ...
+Date:   Tue Apr 14 15:13:59 2026 -0700
+
+    add desserts.py script
+
+commit 14a46c09a8dde829ea44bfe5d02492e0b926b74d (origin/main, origin/HEAD)
+Author: ...
+Date:   Tue Apr 14 14:52:37 2026 -0700
+
+    Add iconic_desserts.csv
+
+commit 7107af1488152b062ef9c3e60bb54134a6320fe4
+Author: ...
+Date:   Tue Apr 14 14:50:23 2026 -0700
+
+    Adding Jairo's favorite dessert
+
+commit 8fe3ad4ca5c5ad7db4b1ba19e03177407a70bf51
+Author: ...
+Date:   Tue Apr 14 14:39:28 2026 -0700
+
+    Initial commit
+
 ```
 
-You can also reduce the quantity of information using the
-`--oneline` option:
+::: {.callout-tip collapse="true" appearance="simple"}
+## About the log output
+
+- Each commit is identified by a unique hash (e.g., `a3a7278bc511ac1047d722bb9833773fd5636a90`).
+- The `HEAD` pointer indicates the current commit that your repository is on.
+- The `Author` and `Date` fields show who made the commit and when.
+- The commit message (e.g., "add Tiramisu to the list of iconic desserts") describes the changes made in that commit.
+- The `origin/main` indicates that the commit is also present in the remote repository on GitHub.
+:::
+
+To avoid having `git log` cover your entire terminal screen, you can limit the number of commits that Git lists by using `-N`, where `N` is the number of commits that you want to view. For example, if you only want information from the last commit you can use:
 
 ```bash
-$ git log --oneline
+git log -1
+
+---
+
+commit a3a7278bc511ac1047d722bb9833773fd5636a90 (HEAD -> main)
+Author: ...
+Date:   Tue Apr 14 15:39:59 2026 -0700
+
+    add Tiramisu to the list of iconic desserts
 ```
 
-```output
-d11d7e5 (HEAD -> main) add Sophia
-019f377 start new webpage
-8defaab initial commit
-```
-
-You can also combine the `--oneline` option with others. One useful
-combination adds `--graph` to display the commit history as a text-based
-graph and to indicate which commits are associated with the
-current `HEAD`, the current branch `main`, or
-[other Git references][git-references]:
+Another option to reduce the quantity of information is using the `--oneline` option:
 
 ```bash
-$ git log --oneline --graph
+git log --oneline
+
+---
+
+a3a7278 (HEAD -> main) add Tiramisu to the list of iconic desserts
+227d6cb add desserts.py script
+14a46c0 (origin/main, origin/HEAD) Add iconic_desserts.csv
+7107af1 Adding Jairo's favorite dessert
+8fe3ad4 Initial commit
 ```
 
-```output
-* d11d7e5 (HEAD -> main) add Sophia
-* 019f377 start new webpage
-* 8defaab initial commit
-```
 
