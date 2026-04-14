@@ -146,259 +146,86 @@ This should return the exact same content that is currently on GitHub!
 
 ## Tracking your work
 
+Let's start tracking our work using git. For this exercise, we want to accomplish the following:
 
+1. Create a new Python script called `desserts.py` and add it to our repository.
+2. Add a function to the script that adds a dessert to our list of favorite desserts.
+3. Add a new dessert to the csv list and save the change as a commit.
+4. Edit the main function in the script to include a destination path for the csv file and save the change as a commit.
 
-Let's create a text file called `index.md` and add it to our repository. The file will later be converted into a webpage by GitHub pages. We'll write the file using a syntax called Markdown, which is why we use the `.md` extensions. 
+### Adding a new file to the repository
 
-Type the text below, replacing the names with people you know:
-
-```
-## Listing of my favorite desserts
-
-- Julien, crepes
-
-```
-
-Exit nano and save your changes.
-
-Check it worked:
+From the command line, create a new empty file called `desserts.py`:
 
 ```bash
-$ cat index.md
+touch desserts.py
 ```
 
-You should see the content you just typed!
+Next, copy and paste the following code into the `desserts.py` file (use nano or any text editor you prefer):
 
+```python
+import csv
 
-If we check the status of our project again,
-Git tells us that it's noticed the new file:
+def read_csv(file_path: str) -> list[dict]:
+    with open(file_path, mode='r') as file:
+        csv_reader = csv.DictReader(file)
+        data = [row for row in csv_reader]
+    return data
+
+def add_dessert(data: list[dict], rank: int, dessert: str) -> list[dict]:
+    if any(row['dessert'] == dessert for row in data):
+        print(f"{dessert} is already in the list. No changes made.")
+        return data
+
+    for row in data:
+        if int(row['rank']) >= rank:
+            row['rank'] = str(int(row['rank']) + 1)
+
+    data.append({'rank': str(rank), 'dessert': dessert})
+    data.sort(key=lambda x: int(x['rank']))
+
+    return data
+    
+    
+def to_csv(data: list[dict], file_path: str) -> None:
+    with open(file_path, mode='w', newline='') as file:
+        fieldnames = ['rank', 'dessert']
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        for item in data:
+            writer.writerow(item)
+
+def main(rank: int, dessert: str) -> None:
+    """Read the iconic desserts CSV, 
+    insert a dessert at the given rank, 
+    and save the updated list.
+
+    Args:
+        rank (int): Rank at which to insert the dessert.
+        dessert (str): Name of the dessert to add.
+    """
+    data = read_csv('data/iconic_desserts.csv')
+    new_data = add_dessert(data, rank, dessert)
+    to_csv(new_data, 'data/iconic_desserts.csv')
+
+if __name__ == "__main__":
+    # Add a new dessert to the list at rank 3
+    main(3, 'Tiramisu')
+
+```
+
+Next, we can use `git` to check the status of our repository:
 
 ```bash
-$ git status
+git status
 ```
 
-```output
-On branch main
+The 
 
-No commits yet
+::: {.callout-note appearance="simple" collapse="true"}
+## About the code
 
-Untracked files:
-   (use "git add <file>..." to include in what will be committed)
-
-	index.md
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-The "untracked files" message means that there's a file in the directory
-that Git isn't keeping track of.
-We can tell Git to track a file using `git add`:
-
-```bash
-$ git add index.md
-```
-
-and then check that the right thing happened:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-
-	new file:   index.md
-
-```
-
-Git now knows that it's supposed to keep track of `index.md`,
-but it hasn't recorded these changes as a commit yet.
-To get it to do that,
-we need to run one more command:
-
-```bash
-$ git commit -m "start new webpage"
-```
-
-```output
-[main (root-commit) f22b25e] Start new webpage
- 1 file changed, 1 insertion(+)
- create mode 100644 index.md
-```
-
-When we run `git commit`,
-Git takes everything we have told it to save by using `git add` and stores a copy permanently inside the special `.git` directory.
-This permanent copy is called a commit (revision) and its short identifier is `f22b25e`. Your commit may have another identifier.
-
-We use the `-m` flag (for "message") to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run `git commit` without the `-m` option, Git will launch `nano` (or whatever other editor we configured as `core.editor`) so that we can write a longer message.
-
-Good commit messages start with a brief (\<50 characters) statement about the changes made in the commit. Generally, the message should complete the sentence "If applied, this commit will" <commit message here>. If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.
-
-If we run `git status` now:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-nothing to commit, working tree clean
-```
-
-it tells us everything is up to date.
-If we want to know what we've done recently,
-we can ask Git to show us the project's history using `git log`:
-
-```bash
-$ git log
-```
-
-```output
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: ...
-Date:   Thu Aug 22 09:51:46 2013 -0400
-
-    start new webpage
-```
-
-`git log` lists all commits  made to a repository in reverse chronological order.
-The listing for each commit includes
-the commit's full identifier
-(which starts with the same characters as
-the short identifier printed by the `git commit` command earlier),
-the commit's author,
-when it was created,
-and the log message Git was given when the commit was created.
-
-:::{.callout-note}
-## Where Are My Changes?
-
-If we run `ls` at this point, we will still see just one file called `index.md`.
-That's because Git saves information about files' history
-in the special `.git` directory mentioned earlier
-so that our filesystem doesn't become cluttered
-(and so that we can't accidentally edit or delete an old version).
-:::
-
-
-Let's adds more information to the file.
-(Again, we'll edit with `nano` and then `cat` the file to show its contents;
-you may use a different editor, and don't need to `cat`.)
-
-```bash
-$ nano index.md
-```
-
-```output
-## Listing of my favorite desserts
-
-- Julien, crepes
-- Sophia, chocolate
-
-```
-
-When we run `git status` now,
-it tells us that a file it already knows about has been modified:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   index.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-The last line is the key phrase:
-"no changes added to commit". 
-
-We have changed this file, but we haven't told Git we will want to save those changes (which we do with `git add`) nor have we saved them (which we do with `git commit`). So let's do that now. It is good practice to always review our changes before saving them. We do this using `git diff`.
-
-This shows us the differences between the current state of the file and the most recently saved version:
-
-```bash
-$ git diff
-```
-
-```output
-diff --git a/index.md b/index.md
-index 7d781a7..bbb33fe 100644
---- a/index.md
-+++ b/index.md
-@@ -1 +1,3 @@
-## Listing of my favorite desserts
-
-- Julien, crepes
-+ - Sophia, chocolate
-
-```
-
-The output is cryptic because
-it is actually a series of commands for tools like editors and `patch` telling them how to reconstruct one file given the other.
-If we break it down into pieces:
-
-1. The first line tells us that Git is producing output similar to the Unix `diff` command
-  comparing the old and new versions of the file.
-2. The second line tells exactly which versions of the file
-  Git is comparing;
-  `7d781a7` and `bbb33fe` are unique computer-generated labels for those versions.
-3. The third and fourth lines once again show the name of the file being changed.
-4. The remaining lines are the most interesting, they show us the actual differences
-  and the lines on which they occur.
-  In particular,
-  the `+` marker in the first column shows where we added a line.
-
-After reviewing our change, it's time to commit it:
-
-```bash
-$ git commit -m "add Sophia"
-```
-
-```output
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   index.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-Whoops:
-Git won't commit because we didn't use `git add` first.
-Let's fix that:
-
-```bash
-$ git add index.md
-$ git commit -m "add Sophia"
-```
-
-```output
-[main 019f377] add Sophia
- 1 file changed, 1 insertions(+)
-```
-
-:::{.callout-note}
-Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our
-changes in stages and capture changes in logical portions rather than only large batches.
-For example, suppose we're adding a few citations to relevant research to our thesis.
-We might want to commit those additions, and the corresponding bibliography entries,
-but *not* commit some of our work drafting the conclusion (which we haven't finished yet).
-
-To allow for this, Git has a special *staging area* where it keeps track of things that have been added to
-the current changeset but not yet committed.
+The code defines a Python script that manages a list of desserts stored in a CSV file. It includes functions to read the CSV file, add a new dessert to the list while maintaining the correct ranking, and write the updated list back to the CSV file. The `main` function demonstrates how to use these functions by adding "Tiramisu" at rank 3 in the list of iconic desserts.
 :::
 
 ## Exploring git history
