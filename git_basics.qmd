@@ -471,18 +471,9 @@ Usually the way to revert changes depends if the file is staged, already commite
 
 :::
 
-What we're doing here is telling `git` to restore the `iconic_desserts.csv` file to the state it was in the previous commit (indicated by `HEAD~1`). After running this command, the `iconic_desserts.csv` file should be back to its original state before we added Tiramisu and moved to the staging area.
+What we're doing here is telling `git` to restore the `iconic_desserts.csv` file to the state it was in the previous commit (indicated by `HEAD~1`). After running this command, the `iconic_desserts.csv` file should be back to its original state before we added Tiramisu and moved to the staging area. Let's commit this change to the repository:
 
 ```bash
-git status
-
----
-On branch main
-Your branch is ahead of 'origin/main' by 2 commits.
-  (use "git push" to publish your local commits)
-
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-	modified:   iconic_desserts.csv
+git commit -m "restore iconic_desserts.csv to its original state"
 ```
 
