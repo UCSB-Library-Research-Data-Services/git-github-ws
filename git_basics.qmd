@@ -136,6 +136,12 @@ cd favorite-desserts
 ls -al
 ```
 
+::: {.callout-note}
+## In PowerShell
+
+In PowerShell you can run `ls` or `dir` to list the content of a directory, and `cd` to change directory. To replicate the `ls -al` command, you can run `ls -Force` or `dir -Force` to show all files, including hidden ones.
+:::
+
 This should return the exact same content that is currently on GitHub!
 
 
