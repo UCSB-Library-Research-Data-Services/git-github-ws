@@ -7,8 +7,8 @@ title: "Introduction to git & GitHub"
 
 - Have a better knowledge of version control
 - Have a better understanding of the basic git workflow: `commit-pull-push`
-- Have a better grasp of how you can collaborate using the GitHub website
-- Wanting to know more about git and GitHub, it's a journey we hop you'll start yours!!!
+- Have a better grasp of how you can share code using the GitHub website
+- Wanting to know more about git and GitHub, it's a journey we hope you'll start yours after this workshop!!!
 
 
 ## Session Overview
