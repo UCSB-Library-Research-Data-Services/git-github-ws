@@ -113,7 +113,7 @@ Check out Jenny Brian [Happy git trouble shooting section](http://happygitwithr.
 ## Clone a repository
 
 ::: {.callout-tip}
-If you not have yet your `favorite-desserts` GitHub repository, please follow those [steps](https://ucsb-library-research-data-services.github.io/reproducible-lab/01-handson_github_website.html)
+If you not have yet your `favorite-desserts` GitHub repository, please follow those [steps](handson_github_website.qmd)
 :::
 
 
