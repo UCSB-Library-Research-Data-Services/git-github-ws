@@ -30,16 +30,17 @@ It should return something like above. **If you get an error, you will have to i
 
 You can download a copy of `git` here: https://git-scm.com/downloads and follow the instructions according to your Operating System. 
 
-
-### Windows
+::: {.panel-tabset}
+## Windows
 
 You can keep the options to default during the installation, until you reach `Configuring the terminal emulator to use with Git Bash` -> be sure `Use MinTTY` is selected.  This will install both git and a set of useful command-line tools using a trimmed down Bash shell. 
 
 
-### Mac OSX 
+## Mac OSX 
 
 Depending on the version, you might have to run a few commands from the terminal. Please refer to the `README.txt` that comes with the download regarding the exact steps to follow.
 
+:::
 
 ## Setting up your `git` identity
 
