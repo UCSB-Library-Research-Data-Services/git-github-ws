@@ -149,7 +149,7 @@ This should return the exact same content that is currently on GitHub!
 Let's start tracking our work using git. For this exercise, we want to accomplish the following:
 
 1. Create a new Python script called `desserts.py` and add it to our repository.
-2. Add a function to the script that adds a dessert to our list of favorite desserts.
+2. Copy and paste the code provided in the `desserts.py` file and save the change as a commit.
 3. Add a new dessert to the csv list and save the change as a commit.
 4. Edit the main function in the script to include a destination path for the csv file and save the change as a commit.
 
@@ -259,6 +259,21 @@ Changes to be committed:
 
 ```
 
+At this momment, `git` is tracking the `desserts.py` file, but the changes we made to the file are not "saved" in the git history yet. This is called a **commit**, which is a snapshot of the state of the file(s) at a given moment in time. To create a commit, we need to run the following command:
+
+```bash
+git commit -m "add desserts.py script"
+```
+
+This will create a new commit with the message *"add desserts.py script"*. The `-m` flag is used to specify the commit message. You can use any message you want, but it should be descriptive of the changes you made in that commit.
+
+The output should be similar to this:
+
+```bash
+[main 53f6915] add desserts.py script
+ 1 file changed, 47 insertions(+)
+ create mode 100644 desserts.py
+```
 
 ## Exploring git history
 
