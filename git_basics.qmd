@@ -450,4 +450,39 @@ a3a7278 (HEAD -> main) add Tiramisu to the list of iconic desserts
 8fe3ad4 Initial commit
 ```
 
+#### Restore iconic_desserts.csv to the previous state
+
+Our current workflow have an issue: we are altering the `iconic_desserts.csv` file directly, which means that if we make a mistake, we might lose the original content of the file. Let's start by restoring the `iconic_desserts.csv` file to the previous state before we added Tiramisu. 
+
+To achieve this, we can use the `checkout` command to restore the file to the state it was in the previous commit:
+
+```bash
+git checkout HEAD~1 iconic_desserts.csv
+
+---
+# Success message should be similar to this:
+Updated 1 path from a4090b9
+```
+
+::: {.callout-note collapse="true" appearance="simple"}
+## About reverting changes
+
+Usually the way to revert changes depends if the file is staged, already commited, if is currently modified, etc. Depending the case, you might have to use different commands, such as `git restore`, `git reset`, `git revert`, etc. For more information on how to revert changes in different scenarios, check out the [Git documentation](https://git-scm.com/docs){target="_blank"}, particularly the commands under the section "Basic Snapshotting" and "Patching".
+
+:::
+
+What we're doing here is telling `git` to restore the `iconic_desserts.csv` file to the state it was in the previous commit (indicated by `HEAD~1`). After running this command, the `iconic_desserts.csv` file should be back to its original state before we added Tiramisu and moved to the staging area.
+
+```bash
+git status
+
+---
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   iconic_desserts.csv
+```
 
