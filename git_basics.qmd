@@ -153,6 +153,28 @@ Let's start tracking our work using git. For this exercise, we want to accomplis
 3. Add a new dessert to the csv list and save the change as a commit.
 4. Edit the main function in the script to include a destination path for the csv file and save the change as a commit.
 
+::: {.callout-note appearance="simple" collapse="true"}
+## Quick Python check
+
+Before running the script, confirm which Python command works on your machine:
+
+```bash
+python --version
+```
+
+If you get an error, try:
+
+```bash
+python3 --version
+py -3 --version
+```
+
+Use the command that returns a Python 3 version to run the script.
+
+If none of the above commands work, you will need to install Python on your machine. You can download it from [https://www.python.org/downloads/](https://www.python.org/downloads/){target="_blank"} and follow the instructions for your operating system.
+
+:::
+
 ### Adding a new file to the repository
 
 From the command line, create a new empty file called `desserts.py`:
@@ -186,7 +208,6 @@ def add_dessert(data: list[dict], rank: int, dessert: str) -> list[dict]:
 
     return data
     
-    
 def to_csv(data: list[dict], file_path: str) -> None:
     with open(file_path, mode='w', newline='') as file:
         fieldnames = ['rank', 'dessert']
@@ -204,9 +225,9 @@ def main(rank: int, dessert: str) -> None:
         rank (int): Rank at which to insert the dessert.
         dessert (str): Name of the dessert to add.
     """
-    data = read_csv('data/iconic_desserts.csv')
+    data = read_csv('iconic_desserts.csv')
     new_data = add_dessert(data, rank, dessert)
-    to_csv(new_data, 'data/iconic_desserts.csv')
+    to_csv(new_data, 'iconic_desserts.csv')
 
 if __name__ == "__main__":
     # Add a new dessert to the list at rank 3
@@ -219,6 +240,8 @@ if __name__ == "__main__":
 
 The code defines a Python script that manages a list of desserts stored in a CSV file. It includes functions to read the CSV file, add a new dessert to the list while maintaining the correct ranking, and write the updated list back to the CSV file. The `main` function demonstrates how to use these functions by adding "Tiramisu" at rank 3 in the list of iconic desserts.
 :::
+
+#### Check git workspace status
 
 Next, we can use `git` to check the status of our repository by running the following command:
 
@@ -238,6 +261,8 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
+
+#### Add the file to the staging area
 
 The list of untracked files includes all the files that are in your repository but are not being tracked by `git`. To start tracking the `desserts.py` file, we need to add it to the staging area:
 
@@ -259,6 +284,8 @@ Changes to be committed:
 
 ```
 
+#### Committing the changes
+
 At this momment, `git` is tracking the `desserts.py` file, but the changes we made to the file are not "saved" in the git history yet. This is called a **commit**, which is a snapshot of the state of the file(s) at a given moment in time. To create a commit, we need to run the following command:
 
 ```bash
@@ -274,6 +301,23 @@ The output should be similar to this:
  1 file changed, 47 insertions(+)
  create mode 100644 desserts.py
 ```
+
+### Tracking changes to data
+
+The script we just created is designed to include a new dessert in the `iconic_desserts.csv` file. Running the script will result in a new dessert (Tiramisu) being added to the list at rank 3, and the ranks of the other desserts being updated accordingly. Let's run the script to see how it works:
+
+```bash
+python desserts.py
+```
+
+::: {.callout-warning collapse="true" appearance="simple"}
+## Troubleshooting
+
+Some common issues that might arise when running the script and how to solve them:
+
+- **command not found: python**: Run `python --version` first; if needed use `python3 desserts.py` (macOS/Linux) or `py -3 desserts.py` (Windows).
+- **FileNotFoundError: [Errno 2] No such file or directory: 'iconic_desserts.csv'**: Run the command from the folder that contains both files.
+:::
 
 ## Exploring git history
 
