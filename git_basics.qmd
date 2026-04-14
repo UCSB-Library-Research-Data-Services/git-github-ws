@@ -353,6 +353,22 @@ index 351fb57..b80e86b 100644
 +42,Blondies
 ```
 
+::: {.callout-note appearance="simple"}
+## Commit changes
+
+Now is your turn to commit the changes made to the `iconic_desserts.csv` file. Follow the same steps as before and use the following commit message: "add Tiramisu to the list of iconic desserts".
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+```bash
+git add iconic_desserts.csv
+git commit -m "add Tiramisu to the list of iconic desserts"
+```
+:::
+
+:::
+
 
 
 ## Exploring git history
