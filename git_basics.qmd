@@ -211,7 +211,8 @@ def add_dessert(data: list[dict], rank: int, dessert: str) -> list[dict]:
 def to_csv(data: list[dict], file_path: str) -> None:
     with open(file_path, mode='w', newline='') as file:
         fieldnames = ['rank', 'dessert']
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer = csv.DictWriter(file, fieldnames=fieldnames,
+                                lineterminator='\n')
         writer.writeheader()
         for item in data:
             writer.writerow(item)
@@ -228,17 +229,18 @@ def main(rank: int, dessert: str) -> None:
     data = read_csv('iconic_desserts.csv')
     new_data = add_dessert(data, rank, dessert)
     to_csv(new_data, 'iconic_desserts.csv')
+    print(f"Added {dessert} at rank {rank}.")
 
 if __name__ == "__main__":
     # Add a new dessert to the list at rank 3
-    main(3, 'Tiramisu')
+    main(37, 'Tiramisu')
 
 ```
 
 ::: {.callout-note appearance="simple" collapse="true"}
 ## About the code
 
-The code defines a Python script that manages a list of desserts stored in a CSV file. It includes functions to read the CSV file, add a new dessert to the list while maintaining the correct ranking, and write the updated list back to the CSV file. The `main` function demonstrates how to use these functions by adding "Tiramisu" at rank 3 in the list of iconic desserts.
+The code defines a Python script that manages a list of desserts stored in a CSV file. It includes functions to read the CSV file, add a new dessert to the list while maintaining the correct ranking, and write the updated list back to the CSV file. The `main` function demonstrates how to use these functions by adding "Tiramisu" at rank 37 in the list of iconic desserts.
 :::
 
 #### Check git workspace status
@@ -318,6 +320,40 @@ Some common issues that might arise when running the script and how to solve the
 - **command not found: python**: Run `python --version` first; if needed use `python3 desserts.py` (macOS/Linux) or `py -3 desserts.py` (Windows).
 - **FileNotFoundError: [Errno 2] No such file or directory: 'iconic_desserts.csv'**: Run the command from the folder that contains both files.
 :::
+
+If the output shows the message `Added Tiramisu at rank 37.`, then the script ran successfully. 
+
+We can use `git` to see what have changed in the `iconic_desserts.csv` file by using the `diff` command:
+
+```bash
+git diff iconic_desserts.csv
+```
+
+The resulting output shows the differences between the current and the previous version of the file. Lines that start with a `-` were removed, and those that start with a `+` were added. The output should look something like this:
+
+```bash
+diff --git a/iconic_desserts.csv b/iconic_desserts.csv
+index 351fb57..b80e86b 100644
+--- a/iconic_desserts.csv
++++ b/iconic_desserts.csv
+@@ -35,8 +35,9 @@ rank,dessert
+ 34,Chess pie
+ 35,Sour cream pound cake
+ 36,Key lime pie
+-37,Cherry pie
+-38,Seven-layer bars
+-39,Coconut cake
+-40,Brownies
+-41,Blondies
++37,Tiramisu
++38,Cherry pie
++39,Seven-layer bars
++40,Coconut cake
++41,Brownies
++42,Blondies
+```
+
+
 
 ## Exploring git history
 
