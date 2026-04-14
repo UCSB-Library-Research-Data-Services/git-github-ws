@@ -33,12 +33,12 @@ You can download and install `git` from here: https://git-scm.com/install/ and f
 Depending on your OS, you might have to follow different steps to install `git` on your computer:
 
 ::: {.panel-tabset}
-## Windows
+## {{< bi windows >}} Windows
 
 You can keep the options to default during the installation, until you reach `Configuring the terminal emulator to use with Git Bash` -> be sure `Use MinTTY` is selected.  This will install both git and a set of useful command-line tools using a trimmed down Bash shell. 
 
 
-## Mac OSX 
+## {{< bi apple >}} Mac OSX 
 
 Depending on the version, you might have to run a few commands from the terminal. Please refer to the `README.txt` that comes with the download regarding the exact steps to follow.
 
@@ -146,6 +146,8 @@ This should return the exact same content that is currently on GitHub!
 
 
 ## Tracking your work
+
+
 
 Let's create a text file called `index.md` and add it to our repository. The file will later be converted into a webpage by GitHub pages. We'll write the file using a syntax called Markdown, which is why we use the `.md` extensions. 
 
