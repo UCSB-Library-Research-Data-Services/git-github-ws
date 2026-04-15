@@ -109,10 +109,10 @@ If you do not have your `favorite-desserts` GitHub repository, please follow tho
 :::
 
 
-Navigate to the folder (e.g `cd ~/Documents`) where you want to save your repository and run the following command:
+Navigate to the folder (e.g `cd ~/Documents`) where you want to save your repository and run the following command (replace `<your-github-username>` with your actual GitHub username):
 
 ```bash
-git clone https://github.com/brunj7/favorite-desserts.git
+git clone https://github.com/<your-github-username>/favorite-desserts.git
 ```
 
 You should have a new folder on your local machine named favorite-desserts after your repository :
