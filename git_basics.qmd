@@ -105,7 +105,7 @@ Check out Jenny Brian [Happy git trouble shooting section](http://happygitwithr.
 ## Clone a repository
 
 ::: {.callout-tip}
-If you not have yet your `favorite-desserts` GitHub repository, please follow those [steps](handson_github_website.qmd)
+If you do not have your `favorite-desserts` GitHub repository, please follow those [steps](handson_github_website.qmd)
 :::
 
 
@@ -277,14 +277,6 @@ git commit -m "add desserts.py script"
 
 This will create a new commit with the message *"add desserts.py script"*. The `-m` flag is used to specify the commit message. You can use any message you want, but it should be descriptive of the changes you made in that commit.
 
-The output should be similar to this:
-
-```bash
-[main 53f6915] add desserts.py script
- 1 file changed, 47 insertions(+)
- create mode 100644 desserts.py
-```
-
 ### Tracking changes to data
 
 The script we just created is designed to include a new dessert in the `iconic_desserts.csv` file. Running the script will result in a new dessert (Tiramisu) being added to the list at rank 37, and the ranks of the other desserts being updated accordingly. Let's run the script to see how it works:
@@ -374,7 +366,7 @@ git commit -m "add Tiramisu to the list of iconic desserts"
 
 ### Control the repository history
 
-So far, we have made changes incrementally by adding and commiting new changes to the repository. However, we can also revert to a previous state of the repository. Let's explore the current history of our repository first by using the `log` command:
+So far, we have made changes incrementally by adding and committing new changes to the repository. However, we can also revert to a previous state of the repository. Let's explore the current history of our repository first by using the `log` command:
 
 ```bash
 git log
@@ -455,7 +447,7 @@ a3a7278 (HEAD -> main) add Tiramisu to the list of iconic desserts
 
 #### Restore iconic_desserts.csv to the previous state
 
-Our current workflow have an issue: we are altering the `iconic_desserts.csv` file directly, which means that if we make a mistake, we might lose the original content of the file. Let's start by restoring the `iconic_desserts.csv` file to the previous state before we added Tiramisu. 
+Our current workflow has an issue: we are altering the `iconic_desserts.csv` file directly, which means that if we make a mistake, we might lose the original content of the file. Let's start by restoring the `iconic_desserts.csv` file to the previous state before we added Tiramisu. 
 
 To achieve this, we can use the `checkout` command to restore the file to the state it was in the previous commit:
 
