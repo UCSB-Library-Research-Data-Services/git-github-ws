@@ -1,5 +1,5 @@
 ---
-title: "Collaborating with GitHub"
+title: "Code Sharing with GitHub"
 ---
 
 ## Sending changes back to GitHub
