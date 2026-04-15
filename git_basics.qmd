@@ -232,7 +232,7 @@ def main(rank: int, dessert: str) -> None:
     print(f"Added {dessert} at rank {rank}.")
 
 if __name__ == "__main__":
-    # Add a new dessert to the list at rank 3
+    # Add a new dessert to the list at rank 37
     main(37, 'Tiramisu')
 
 ```
@@ -477,3 +477,65 @@ What we're doing here is telling `git` to restore the `iconic_desserts.csv` file
 git commit -m "restore iconic_desserts.csv to its original state"
 ```
 
+#### Edit `desserts.py`
+
+Open the `desserts.py` file and edit the `main` function so it looks like this:
+
+```python
+def main(rank: int, dessert: str, destination_path: str) -> None:
+    """Read the iconic desserts CSV, 
+    insert a dessert at the given rank, 
+    and save the updated list.
+
+    Args:
+        rank (int): Rank at which to insert the dessert.
+        dessert (str): Name of the dessert to add.
+        destination_path (str): Path to save the updated CSV file.
+    """
+    data = read_csv('iconic_desserts.csv')
+    new_data = add_dessert(data, rank, dessert)
+    to_csv(new_data, destination_path)
+    print(f"Added {dessert} at rank {rank}.")
+
+if __name__ == "__main__":
+    # Add a new dessert to the list at rank 3
+    main(37, 'Tiramisu', 'updated_iconic_desserts.csv')
+
+```
+
+Save the file and run `git diff` to see the changes you made:
+
+```bash
+git diff desserts.py
+
+# The output should look something like this:
+diff --git a/desserts.py b/desserts.py
+index 792959f..a199a68 100644
+--- a/desserts.py
++++ b/desserts.py
+@@ -29,7 +29,7 @@ def to_csv(data: list[dict], file_path: str) -> None:
+         for item in data:
+             writer.writerow(item)
+ 
+-def main(rank: int, dessert: str) -> None:
++def main(rank: int, dessert: str, destination_path: str) -> None:
+     """Read the iconic desserts CSV, 
+     insert a dessert at the given rank, 
+     and save the updated list.
+@@ -37,12 +37,13 @@ def main(rank: int, dessert: str) -> None:
+     Args:
+         rank (int): Rank at which to insert the dessert.
+         dessert (str): Name of the dessert to add.
++       destination_path (str): Path to save the updated CSV file.
+     """
+     data = read_csv('iconic_desserts.csv')
+     new_data = add_dessert(data, rank, dessert)
+-    to_csv(new_data, 'iconic_desserts.csv')
++    to_csv(new_data, destination_path)
+     print(f"Added {dessert} at rank {rank}.")
+ 
+ if __name__ == "__main__":
+     # Add a new dessert to the list at rank 37
+-    main(37, 'Tiramisu')
++    main(37, 'Tiramisu', 'updated_iconic_desserts.csv')
+```
