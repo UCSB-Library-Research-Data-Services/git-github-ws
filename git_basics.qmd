@@ -4,14 +4,15 @@ title: "Setting up & using git"
 
 This session will cover:
 
-- Setting up `git` on computer
+- Setting up `git` on your computer
   - Installing git
   - Setting up your identity
-  
-- git basic workflow using RStudio
-  - Cloning a Repository from GitHub to your computer using RStudio projects
-  - Tracking changes to your scripts
-  - Pushing your changes to GitHub
+
+- Basic git workflow
+  - Cloning a repository from GitHub
+  - Tracking changes: staging and committing files
+  - Inspecting changes with `git diff` and `git log`
+  - Restoring previous versions of a file
 
 
 # Setting up git on your computer
@@ -28,28 +29,30 @@ It should return something like above. **If you get an error, you will have to i
 
 ## Installing git
 
-You can download a copy of `git` here: https://git-scm.com/downloads and follow the instructions according to your Operating System. 
+You can download and install `git` from here: [https://git-scm.com/install/](){target="_blank"} and follow the instructions according to your Operating System. 
 
+Depending on your OS, you might have to follow different steps to install `git` on your computer:
 
-### Windows
+::: {.panel-tabset}
+## {{< bi windows >}} Windows
 
 You can keep the options to default during the installation, until you reach `Configuring the terminal emulator to use with Git Bash` -> be sure `Use MinTTY` is selected.  This will install both git and a set of useful command-line tools using a trimmed down Bash shell. 
 
-
-### Mac OSX 
+## {{< bi apple >}} Mac OSX 
 
 Depending on the version, you might have to run a few commands from the terminal. Please refer to the `README.txt` that comes with the download regarding the exact steps to follow.
 
+:::
 
 ## Setting up your `git` identity
 
-Before you start using git on any computer, you will have to set your identity on your system, as every snapshot of files is associated with the user who implemented the modifications to the file(s).
+Before you start using git on any computer, you should set your identity on your system, as every snapshot of files is associated with the user who implemented the modifications to the file(s).
 
 Open the `Terminal` or `git bash` and then type the following commands.
 
 ### Setup your profile
 
-#### At the commande line
+#### At the command line
 
 If you are not sure if you have already set your git identity you can check this running this command:
 
@@ -57,7 +60,7 @@ If you are not sure if you have already set your git identity you can check this
 git config --global --list
 ```
 
-If you identity is not set yet, you need to provide your name and email (we recommend to use the same email as used when setting your GitHub account): 
+If your identity is not set yet, you need to provide your name and email (we recommend to use the same email as used when setting your GitHub account): 
 
 ```bash
 git config --global user.name "your Full Name"
@@ -65,45 +68,51 @@ git config --global user.email "your Email"
 ```
 
 
-##### Optional
+::: {.callout-note collapse="true"}
+## Optional: additional `git config` commands
 
-Check that everything is correct: 
-
-```bash
-git config --global --list
-```
-
-Modify everything at the same time:
+Edit your git config file directly in your text editor:
 
 ```bash
 git config --global --edit
 ```
 
-Set your text editor: 
+Set your default text editor (e.g. [`nano`](https://www.nano-editor.org){target="_blank"}, `notepad`, `code`, etc.):
 
 ```bash
-git config --system core.editor nano
+git config --global core.editor nano
 ```
 
-Here [`nano`](https://www.nano-editor.org) is used as example; you can choose most of the text editor you might have installed on your computer (atom, sublime, notepad++ ...).
+::: {.callout-tip}
+## Text editor for Windows users
 
-Problem with any of those steps? Check out Jenny Brian [Happy git trouble shooting section](http://happygitwithr.com/troubleshooting.html){target="_blank"}
+Outside of Git Bash, `notepad` is a good default:
 
+```bash
+git config --global core.editor notepad
+```
+:::
 
+:::
 
-## Using Git
+::: {.callout-caution}
+# Problem with any of those steps? 
+
+Check out Jenny Brian [Happy git trouble shooting section](http://happygitwithr.com/troubleshooting.html){target="_blank"}
+
+:::
 
 ## Clone a repository
 
 ::: {.callout-tip}
-If you not have yet your `favorite-desserts` GitHub repository, please follow those [steps](https://ucsb-library-research-data-services.github.io/reproducible-lab/01-handson_github_website.html)
+If you do not have your `favorite-desserts` GitHub repository, please follow those [steps](handson_github_website.qmd)
 :::
 
 
-Navigate to the folder (e.g `cd ~/Documents`) where you want to save your repository and run the following command: 
+Navigate to the folder (e.g `cd ~/Documents`) where you want to save your repository and run the following command (replace `<your-github-username>` with your actual GitHub username):
 
 ```bash
-git clone https://github.com/brunj7/favorite-desserts.git
+git clone https://github.com/<your-github-username>/favorite-desserts.git
 ```
 
 You should have a new folder on your local machine named favorite-desserts after your repository :
@@ -119,350 +128,449 @@ cd favorite-desserts
 ls -al
 ```
 
+::: {.callout-note}
+## In PowerShell
+
+In PowerShell you can run `ls` or `dir` to list the content of a directory, and `cd` to change directory. To replicate the `ls -al` command, you can run `ls -Force` or `dir -Force` to show all files, including hidden ones.
+:::
+
 This should return the exact same content that is currently on GitHub!
 
 
 ## Tracking your work
 
-Let's create a text file called `index.md` and add it to our repository. The file will later be converted into a webpage by GitHub pages. We'll write the file using a syntax called Markdown, which is why we use the `.md` extensions. 
+Let's start tracking our work using git. For this exercise, we want to accomplish the following:
 
-Type the text below, replacing the names with people you know:
+1. Create a new Python script called `desserts.py` and add it to our repository.
+2. Copy and paste the code provided in the `desserts.py` file and save the change as a commit.
+3. Add a new dessert to the csv list and save the change as a commit.
+4. Edit the main function in the script to include a destination path for the csv file and save the change as a commit.
 
-```
-## Listing of my favorite desserts
+### Adding a new file to the repository
 
-- Julien, crepes
-
-```
-
-Exit nano and save your changes.
-
-Check it worked:
+From the command line, create a new empty file called `desserts.py`:
 
 ```bash
-$ cat index.md
+touch desserts.py
 ```
 
-You should see the content you just typed!
+::: {.callout-note appearance="simple"}
+## In PowerShell
 
-
-If we check the status of our project again,
-Git tells us that it's noticed the new file:
+`touch` is not available in PowerShell. Use `New-Item` instead:
 
 ```bash
-$ git status
+New-Item desserts.py
+```
+:::
+
+Next, copy and paste the following code into the `desserts.py` file (use nano or any text editor you prefer):
+
+```python
+import csv
+
+def read_csv(file_path: str) -> list[dict]:
+    with open(file_path, mode='r') as file:
+        csv_reader = csv.DictReader(file)
+        data = [row for row in csv_reader]
+    return data
+
+def add_dessert(data: list[dict], rank: int, dessert: str) -> list[dict]:
+    if any(row['dessert'] == dessert for row in data):
+        print(f"{dessert} is already in the list. No changes made.")
+        return data
+
+    for row in data:
+        if int(row['rank']) >= rank:
+            row['rank'] = str(int(row['rank']) + 1)
+
+    data.append({'rank': str(rank), 'dessert': dessert})
+    data.sort(key=lambda x: int(x['rank']))
+
+    return data
+    
+def to_csv(data: list[dict], file_path: str) -> None:
+    with open(file_path, mode='w', newline='') as file:
+        fieldnames = ['rank', 'dessert']
+        writer = csv.DictWriter(file, fieldnames=fieldnames,
+                                lineterminator='\n')
+        writer.writeheader()
+        for item in data:
+            writer.writerow(item)
+
+def main(rank: int, dessert: str) -> None:
+    """Read the iconic desserts CSV, 
+    insert a dessert at the given rank, 
+    and save the updated list.
+
+    Args:
+        rank (int): Rank at which to insert the dessert.
+        dessert (str): Name of the dessert to add.
+    """
+    data = read_csv('iconic_desserts.csv')
+    new_data = add_dessert(data, rank, dessert)
+    to_csv(new_data, 'iconic_desserts.csv')
+    print(f"Added {dessert} at rank {rank}.")
+
+if __name__ == "__main__":
+    # Add a new dessert to the list at rank 37
+    main(37, 'Tiramisu')
+
 ```
 
-```output
+::: {.callout-note appearance="simple" collapse="true"}
+## About the code
+
+The code defines a Python script that manages a list of desserts stored in a CSV file. It includes functions to read the CSV file, add a new dessert to the list while maintaining the correct ranking, and write the updated list back to the CSV file. The `main` function demonstrates how to use these functions by adding "Tiramisu" at rank 37 in the list of iconic desserts.
+:::
+
+#### Check git workspace status
+
+Next, we can use `git` to check the status of our repository by running the following command:
+
+```bash
+git status
+```
+
+The output should be similar to this:
+
+```bash
 On branch main
-
-No commits yet
+Your branch is up to date with 'origin/main'.
 
 Untracked files:
-   (use "git add <file>..." to include in what will be committed)
-
-	index.md
+  (use "git add <file>..." to include in what will be committed)
+	desserts.py
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-The "untracked files" message means that there's a file in the directory
-that Git isn't keeping track of.
-We can tell Git to track a file using `git add`:
+#### Add the file to the staging area
+
+The list of untracked files includes all the files that are in your repository but are not being tracked by `git`. To start tracking the `desserts.py` file, we need to add it to the staging area:
 
 ```bash
-$ git add index.md
+git add desserts.py
 ```
 
-and then check that the right thing happened:
+Now, if we check the status again, we should see that the `desserts.py` file is now being tracked:
 
 ```bash
-$ git status
-```
+git status
 
-```output
 On branch main
-
-No commits yet
+Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-
-	new file:   index.md
+  (use "git restore --staged <file>..." to unstage)
+	new file:   desserts.py
 
 ```
 
-Git now knows that it's supposed to keep track of `index.md`,
-but it hasn't recorded these changes as a commit yet.
-To get it to do that,
-we need to run one more command:
+#### Committing the changes
+
+At this moment, `git` is tracking the `desserts.py` file, but the changes we made to the file are not "saved" in the git history yet. This is called a **commit**, which is a snapshot of the state of the file(s) at a given moment in time. To create a commit, we need to run the following command:
 
 ```bash
-$ git commit -m "start new webpage"
+git commit -m "add desserts.py script"
 ```
 
-```output
-[main (root-commit) f22b25e] Start new webpage
- 1 file changed, 1 insertion(+)
- create mode 100644 index.md
-```
+This will create a new commit with the message *"add desserts.py script"*. The `-m` flag is used to specify the commit message. You can use any message you want, but it should be descriptive of the changes you made in that commit.
 
-When we run `git commit`,
-Git takes everything we have told it to save by using `git add` and stores a copy permanently inside the special `.git` directory.
-This permanent copy is called a commit (revision) and its short identifier is `f22b25e`. Your commit may have another identifier.
+### Tracking changes to data
 
-We use the `-m` flag (for "message") to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run `git commit` without the `-m` option, Git will launch `nano` (or whatever other editor we configured as `core.editor`) so that we can write a longer message.
+The script we just created is designed to include a new dessert in the `iconic_desserts.csv` file. Running the script will result in a new dessert (Tiramisu) being added to the list at rank 37, and the ranks of the other desserts being updated accordingly. Let's run the script to see how it works:
 
-Good commit messages start with a brief (\<50 characters) statement about the changes made in the commit. Generally, the message should complete the sentence "If applied, this commit will" <commit message here>. If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.
+::: {.callout-note appearance="simple" collapse="true"}
+## Quick Python check
 
-If we run `git status` now:
+Before running the script, confirm which Python command works on your machine:
 
 ```bash
-$ git status
+python --version
 ```
 
-```output
-On branch main
-nothing to commit, working tree clean
-```
-
-it tells us everything is up to date.
-If we want to know what we've done recently,
-we can ask Git to show us the project's history using `git log`:
+If you get an error, try:
 
 ```bash
-$ git log
+python3 --version
+py -3 --version
 ```
 
-```output
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: ...
-Date:   Thu Aug 22 09:51:46 2013 -0400
+Use the command that returns a Python 3 version to run the script.
 
-    start new webpage
-```
+If none of the above commands work, you will need to install Python on your machine. You can download it from [https://www.python.org/downloads/](https://www.python.org/downloads/){target="_blank"} and follow the instructions for your operating system.
 
-`git log` lists all commits  made to a repository in reverse chronological order.
-The listing for each commit includes
-the commit's full identifier
-(which starts with the same characters as
-the short identifier printed by the `git commit` command earlier),
-the commit's author,
-when it was created,
-and the log message Git was given when the commit was created.
-
-:::{.callout-note}
-## Where Are My Changes?
-
-If we run `ls` at this point, we will still see just one file called `index.md`.
-That's because Git saves information about files' history
-in the special `.git` directory mentioned earlier
-so that our filesystem doesn't become cluttered
-(and so that we can't accidentally edit or delete an old version).
 :::
 
-
-Let's adds more information to the file.
-(Again, we'll edit with `nano` and then `cat` the file to show its contents;
-you may use a different editor, and don't need to `cat`.)
-
 ```bash
-$ nano index.md
+python desserts.py
 ```
 
-```output
-## Listing of my favorite desserts
+::: {.callout-warning collapse="true" appearance="simple"}
+## Troubleshooting
 
-- Julien, crepes
-- Sophia, chocolate
+Some common issues that might arise when running the script and how to solve them:
 
-```
-
-When we run `git status` now,
-it tells us that a file it already knows about has been modified:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   index.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-The last line is the key phrase:
-"no changes added to commit". 
-
-We have changed this file, but we haven't told Git we will want to save those changes (which we do with `git add`) nor have we saved them (which we do with `git commit`). So let's do that now. It is good practice to always review our changes before saving them. We do this using `git diff`.
-
-This shows us the differences between the current state of the file and the most recently saved version:
-
-```bash
-$ git diff
-```
-
-```output
-diff --git a/index.md b/index.md
-index 7d781a7..bbb33fe 100644
---- a/index.md
-+++ b/index.md
-@@ -1 +1,3 @@
-## Listing of my favorite desserts
-
-- Julien, crepes
-+ - Sophia, chocolate
-
-```
-
-The output is cryptic because
-it is actually a series of commands for tools like editors and `patch` telling them how to reconstruct one file given the other.
-If we break it down into pieces:
-
-1. The first line tells us that Git is producing output similar to the Unix `diff` command
-  comparing the old and new versions of the file.
-2. The second line tells exactly which versions of the file
-  Git is comparing;
-  `7d781a7` and `bbb33fe` are unique computer-generated labels for those versions.
-3. The third and fourth lines once again show the name of the file being changed.
-4. The remaining lines are the most interesting, they show us the actual differences
-  and the lines on which they occur.
-  In particular,
-  the `+` marker in the first column shows where we added a line.
-
-After reviewing our change, it's time to commit it:
-
-```bash
-$ git commit -m "add Sophia"
-```
-
-```output
-On branch main
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   index.md
-
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-
-Whoops:
-Git won't commit because we didn't use `git add` first.
-Let's fix that:
-
-```bash
-$ git add index.md
-$ git commit -m "add Sophia"
-```
-
-```output
-[main 019f377] add Sophia
- 1 file changed, 1 insertions(+)
-```
-
-:::{.callout-note}
-Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our
-changes in stages and capture changes in logical portions rather than only large batches.
-For example, suppose we're adding a few citations to relevant research to our thesis.
-We might want to commit those additions, and the corresponding bibliography entries,
-but *not* commit some of our work drafting the conclusion (which we haven't finished yet).
-
-To allow for this, Git has a special *staging area* where it keeps track of things that have been added to
-the current changeset but not yet committed.
+- **command not found: python**: Run `python --version` first; if needed use `python3 desserts.py` (macOS/Linux) or `py -3 desserts.py` (Windows).
+- **FileNotFoundError: [Errno 2] No such file or directory: 'iconic_desserts.csv'**: Run the command from the folder that contains both files.
 :::
 
-## Exploring git history
+If the output shows the message `Added Tiramisu at rank 37.`, then the script ran successfully. 
 
-You can look at the history of what we've done so far:
-
-```bash
-$ git log
-```
-
-It should look something like this:
-
-```output
-commit d11d7e52ab98d3d4c18cde4c4a0bbeea3fe40983 (HEAD -> main)
-Author: ...
-Date:   Thu Oct 19 12:07:51 2023 -0400
-
-    add Sophia
-
-commit 019f37773f9f18b77f508990df65e56a34df45de
-Author: ...
-Date:   Thu Oct 19 12:03:04 2023 -0400
-
-    start new webpage
-
-commit 8defaab26aa641a4233896ec68e603c541aa77b4
-Author: ...
-Date:   Thu Oct 19 12:01:17 2023 -0400
-
-    intial commit
-```
-
-### Paging the Log
-
-When the output of `git log` is too long to fit in your screen, `git` uses a program to split it into pages of the size of your screen.
-When this "pager" is called, you will notice that the last line in your screen is a `:`, instead of your usual prompt.
-
-- To get out of the pager, press <kbd>Q</kbd>.
-- To move to the next page, press <kbd>Spacebar</kbd>.
-- To search for `some_word` in all pages,
-  press <kbd>/</kbd>
-  and type `some_word`.
-  Navigate through matches pressing <kbd>N</kbd>.
-
-
-To avoid having `git log` cover your entire terminal screen, you can limit the
-number of commits that Git lists by using `-N`, where `N` is the number of
-commits that you want to view. For example, if you only want information from
-the last commit you can use:
+We can use `git` to see what have changed in the `iconic_desserts.csv` file by using the `diff` command:
 
 ```bash
-$ git log -1
+git diff iconic_desserts.csv
 ```
 
-```output
-commit d11d7e52ab98d3d4c18cde4c4a0bbeea3fe40983 (HEAD -> main)
+The resulting output shows the differences between the current and the previous version of the file. Lines that start with a `-` were removed, and those that start with a `+` were added. The output should look something like this:
+
+```bash
+diff --git a/iconic_desserts.csv b/iconic_desserts.csv
+index 351fb57..b80e86b 100644
+--- a/iconic_desserts.csv
++++ b/iconic_desserts.csv
+@@ -35,8 +35,9 @@ rank,dessert
+ 34,Chess pie
+ 35,Sour cream pound cake
+ 36,Key lime pie
+-37,Cherry pie
+-38,Seven-layer bars
+-39,Coconut cake
+-40,Brownies
+-41,Blondies
++37,Tiramisu
++38,Cherry pie
++39,Seven-layer bars
++40,Coconut cake
++41,Brownies
++42,Blondies
+```
+
+::: {.callout-note appearance="simple"}
+## Commit changes
+
+Now is your turn to commit the changes made to the `iconic_desserts.csv` file. Follow the same steps as before and use the following commit message: "add Tiramisu to the list of iconic desserts".
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+```bash
+git add iconic_desserts.csv
+git commit -m "add Tiramisu to the list of iconic desserts"
+```
+:::
+
+:::
+
+### Control the repository history
+
+So far, we have made changes incrementally by adding and committing new changes to the repository. However, we can also revert to a previous state of the repository. Let's explore the current history of our repository first by using the `log` command:
+
+```bash
+git log
+```
+
+The output should look something like this:
+
+```bash
+commit a3a7278bc511ac1047d722bb9833773fd5636a90 (HEAD -> main)
 Author: ...
-Date:   Thu Oct 19 12:07:51 2023 -0400
+Date:   Tue Apr 14 15:39:59 2026 -0700
 
-    add Sophia
+    add Tiramisu to the list of iconic desserts
+
+commit 227d6cba9fa442459bd4c22054fa640600db8cb4
+Author: ...
+Date:   Tue Apr 14 15:13:59 2026 -0700
+
+    add desserts.py script
+
+commit 14a46c09a8dde829ea44bfe5d02492e0b926b74d (origin/main, origin/HEAD)
+Author: ...
+Date:   Tue Apr 14 14:52:37 2026 -0700
+
+    Add iconic_desserts.csv
+
+commit 7107af1488152b062ef9c3e60bb54134a6320fe4
+Author: ...
+Date:   Tue Apr 14 14:50:23 2026 -0700
+
+    Adding Your's favorite dessert
+
+commit 8fe3ad4ca5c5ad7db4b1ba19e03177407a70bf51
+Author: ...
+Date:   Tue Apr 14 14:39:28 2026 -0700
+
+    Initial commit
+
 ```
 
-You can also reduce the quantity of information using the
-`--oneline` option:
+::: {.callout-tip collapse="true" appearance="simple"}
+## About the log output
+
+- Each commit is identified by a unique hash (e.g., `a3a7278bc511ac1047d722bb9833773fd5636a90`).
+- The `HEAD` pointer indicates the current commit that your repository is on.
+- The `Author` and `Date` fields show who made the commit and when.
+- The commit message (e.g., "add Tiramisu to the list of iconic desserts") describes the changes made in that commit.
+- The `origin/main` indicates that the commit is also present in the remote repository on GitHub.
+:::
+
+To avoid having `git log` cover your entire terminal screen, you can limit the number of commits that Git lists by using `-N`, where `N` is the number of commits that you want to view. For example, if you only want information from the last commit you can use:
 
 ```bash
-$ git log --oneline
+git log -1
+
+---
+
+commit a3a7278bc511ac1047d722bb9833773fd5636a90 (HEAD -> main)
+Author: ...
+Date:   Tue Apr 14 15:39:59 2026 -0700
+
+    add Tiramisu to the list of iconic desserts
 ```
 
-```output
-d11d7e5 (HEAD -> main) add Sophia
-019f377 start new webpage
-8defaab initial commit
-```
-
-You can also combine the `--oneline` option with others. One useful
-combination adds `--graph` to display the commit history as a text-based
-graph and to indicate which commits are associated with the
-current `HEAD`, the current branch `main`, or
-[other Git references][git-references]:
+Another option to reduce the quantity of information is using the `--oneline` option:
 
 ```bash
-$ git log --oneline --graph
+git log --oneline
+
+---
+
+a3a7278 (HEAD -> main) add Tiramisu to the list of iconic desserts
+227d6cb add desserts.py script
+14a46c0 (origin/main, origin/HEAD) Add iconic_desserts.csv
+7107af1 Adding Your's favorite dessert
+8fe3ad4 Initial commit
 ```
 
-```output
-* d11d7e5 (HEAD -> main) add Sophia
-* 019f377 start new webpage
-* 8defaab initial commit
+#### Restore iconic_desserts.csv to the previous state
+
+Our current workflow has an issue: we are altering the `iconic_desserts.csv` file directly, which means that if we make a mistake, we might lose the original content of the file. Let's start by restoring the `iconic_desserts.csv` file to the previous state before we added Tiramisu. 
+
+To achieve this, we can use the `checkout` command to restore the file to the state it was in the previous commit:
+
+```bash
+git checkout HEAD~1 iconic_desserts.csv
+
+---
+# Success message should be similar to this:
+Updated 1 path from a4090b9
+```
+
+::: {.callout-note collapse="true" appearance="simple"}
+## About reverting changes
+
+Usually the way to revert changes depends if the file is staged, already commited, if is currently modified, etc. Depending the case, you might have to use different commands, such as `git restore`, `git reset`, `git revert`, etc. For more information on how to revert changes in different scenarios, check out the [Git documentation](https://git-scm.com/docs){target="_blank"}, particularly the commands under the section "Basic Snapshotting" and "Patching".
+
+:::
+
+What we're doing here is telling `git` to restore the `iconic_desserts.csv` file to the state it was in the previous commit (indicated by `HEAD~1`). After running this command, the `iconic_desserts.csv` file should be back to its original state before we added Tiramisu and moved to the staging area. Let's commit this change to the repository:
+
+```bash
+git commit -m "restore iconic_desserts.csv to its original state"
+```
+
+#### Edit `desserts.py`
+
+Open the `desserts.py` file and edit the `main` function so it looks like this:
+
+```python
+def main(rank: int, dessert: str, destination_path: str) -> None:
+    """Read the iconic desserts CSV, 
+    insert a dessert at the given rank, 
+    and save the updated list.
+
+    Args:
+        rank (int): Rank at which to insert the dessert.
+        dessert (str): Name of the dessert to add.
+        destination_path (str): Path to save the updated CSV file.
+    """
+    data = read_csv('iconic_desserts.csv')
+    new_data = add_dessert(data, rank, dessert)
+    to_csv(new_data, destination_path)
+    print(f"Added {dessert} at rank {rank}.")
+
+if __name__ == "__main__":
+    # Add a new dessert to the list at rank 37
+    main(37, 'Tiramisu', 'updated_iconic_desserts.csv')
+
+```
+
+Save the file and run `git diff` to see the changes you made:
+
+```bash
+git diff desserts.py
+
+# The output should look something like this:
+diff --git a/desserts.py b/desserts.py
+index 792959f..a199a68 100644
+--- a/desserts.py
++++ b/desserts.py
+@@ -29,7 +29,7 @@ def to_csv(data: list[dict], file_path: str) -> None:
+         for item in data:
+             writer.writerow(item)
+ 
+-def main(rank: int, dessert: str) -> None:
++def main(rank: int, dessert: str, destination_path: str) -> None:
+     """Read the iconic desserts CSV, 
+     insert a dessert at the given rank, 
+     and save the updated list.
+@@ -37,12 +37,13 @@ def main(rank: int, dessert: str) -> None:
+     Args:
+         rank (int): Rank at which to insert the dessert.
+         dessert (str): Name of the dessert to add.
++       destination_path (str): Path to save the updated CSV file.
+     """
+     data = read_csv('iconic_desserts.csv')
+     new_data = add_dessert(data, rank, dessert)
+-    to_csv(new_data, 'iconic_desserts.csv')
++    to_csv(new_data, destination_path)
+     print(f"Added {dessert} at rank {rank}.")
+ 
+ if __name__ == "__main__":
+     # Add a new dessert to the list at rank 37
+-    main(37, 'Tiramisu')
++    main(37, 'Tiramisu', 'updated_iconic_desserts.csv')
+```
+
+Now, add the changes to the staging area and commit them to the repository:
+
+```bash
+git add desserts.py
+git commit -m "edit main function to include destination path for csv file"
+```
+
+#### Wrapping up
+
+1. Run the `desserts.py` script again to add a new dessert to the list and save the updated list in a new file called `updated_iconic_desserts.csv`.
+2. Use `git` to track the changes to the `updated_iconic_desserts.csv` file and commit those changes to the repository with the message "add Tiramisu to the updated list of iconic desserts".
+
+::: {.callout-tip collapse="true" appearance="simple"}
+## Answer
+
+```bash
+python desserts.py
+git add updated_iconic_desserts.csv
+git commit -m "add Tiramisu to the updated list of iconic desserts"
+```
+:::
+
+At the end, the history of your repository should look something like this:
+
+```bash
+git log --oneline
+
+---
+
+cf47aa1 (HEAD -> main) add Tiramisu to the updated list of iconic desserts
+6d7cbbf edit main function to include destination path for csv file
+ab19fd9 restore iconic_desserts.csv to its original state
+a3a7278 add Tiramisu to the list of iconic desserts
+227d6cb add desserts.py script
+14a46c0 (origin/main, origin/HEAD) Add iconic_desserts.csv
+7107af1 Adding Your's favorite dessert
+8fe3ad4 Initial commit
 ```
 
