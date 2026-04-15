@@ -402,7 +402,7 @@ commit 7107af1488152b062ef9c3e60bb54134a6320fe4
 Author: ...
 Date:   Tue Apr 14 14:50:23 2026 -0700
 
-    Adding Jairo's favorite dessert
+    Adding Your's favorite dessert
 
 commit 8fe3ad4ca5c5ad7db4b1ba19e03177407a70bf51
 Author: ...
@@ -446,7 +446,7 @@ git log --oneline
 a3a7278 (HEAD -> main) add Tiramisu to the list of iconic desserts
 227d6cb add desserts.py script
 14a46c0 (origin/main, origin/HEAD) Add iconic_desserts.csv
-7107af1 Adding Jairo's favorite dessert
+7107af1 Adding Your's favorite dessert
 8fe3ad4 Initial commit
 ```
 
@@ -547,4 +547,35 @@ git add desserts.py
 git commit -m "edit main function to include destination path for csv file"
 ```
 
+#### Wrapping up
+
+1. Run the `desserts.py` script again to add a new dessert to the list and save the updated list in a new file called `updated_iconic_desserts.csv`.
+2. Use `git` to track the changes to the `updated_iconic_desserts.csv` file and commit those changes to the repository with the message "add Tiramisu to the updated list of iconic desserts".
+
+::: {.callout-tip collapse="true" appearance="simple"}
+## Answer
+
+```bash
+python desserts.py
+git add updated_iconic_desserts.csv
+git commit -m "add Tiramisu to the updated list of iconic desserts"
+```
+:::
+
+At the end, the history of your repository should look something like this:
+
+```bash
+git log --oneline
+
+---
+
+cf47aa1 (HEAD -> main) add Tiramisu to the updated list of iconic desserts
+6d7cbbf edit main function to include destination path for csv file
+ab19fd9 restore iconic_desserts.csv to its original state
+a3a7278 add Tiramisu to the list of iconic desserts
+227d6cb add desserts.py script
+14a46c0 (origin/main, origin/HEAD) Add iconic_desserts.csv
+7107af1 Adding Your's favorite dessert
+8fe3ad4 Initial commit
+```
 
