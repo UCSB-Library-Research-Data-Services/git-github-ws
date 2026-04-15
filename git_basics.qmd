@@ -8,8 +8,8 @@ This session will cover:
   - Installing git
   - Setting up your identity
   
-- git basic workflow using RStudio
-  - Cloning a Repository from GitHub to your computer using RStudio projects
+- git basic workflow using Python
+  - Cloning a Repository from GitHub to your computer using Python projects
   - Tracking changes to your scripts
   - Pushing your changes to GitHub
 
