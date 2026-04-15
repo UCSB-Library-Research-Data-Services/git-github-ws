@@ -84,7 +84,7 @@ git config --global --edit
 Set your text editor: 
 
 ```bash
-git config --system core.editor nano
+git config --global core.editor nano
 ```
 
 Here [`nano`](https://www.nano-editor.org){target="_blank"} is used as example; you can choose most of the text editor you might have installed on your computer (atom, sublime, notepad++ ...).
@@ -95,7 +95,7 @@ Here [`nano`](https://www.nano-editor.org){target="_blank"} is used as example; 
 One option for Windows users outside of the `git bash` terminal is to use `notepad` as text editor. To do this, you can run the following command:
 
 ```bash
-git config --system core.editor notepad
+git config --global core.editor notepad
 ```
 
 :::
