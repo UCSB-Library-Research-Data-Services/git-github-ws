@@ -2,7 +2,7 @@
 title: "About RDS"
 ---
 
-[Research Data Services (RDS)](https://www.library.ucsb.edu/research-data-services) helps UCSB researchers manage and preserve their research data through:
+[Research Data Services (RDS)](https://rcd.ucsb.edu/rds) helps UCSB researchers manage and preserve their research data through:
 
 -   Consultations
 -   Long-term engagements
