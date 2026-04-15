@@ -4,14 +4,15 @@ title: "Setting up & using git"
 
 This session will cover:
 
-- Setting up `git` on computer
+- Setting up `git` on your computer
   - Installing git
   - Setting up your identity
-  
-- git basic workflow using Python
-  - Cloning a Repository from GitHub to your computer using Python projects
-  - Tracking changes to your scripts
-  - Pushing your changes to GitHub
+
+- Basic git workflow
+  - Cloning a repository from GitHub
+  - Tracking changes: staging and committing files
+  - Inspecting changes with `git diff` and `git log`
+  - Restoring previous versions of a file
 
 
 # Setting up git on your computer
