@@ -78,6 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-a036e2a4f833fdb5845ec118177f864c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -186,21 +187,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#setting-up-git-on-your-computer" id="toc-setting-up-git-on-your-computer" class="nav-link active" data-scroll-target="#setting-up-git-on-your-computer">Setting up git on your computer</a>
   <ul class="collapse">
-  <li><a href="#installing-git" id="toc-installing-git" class="nav-link" data-scroll-target="#installing-git">Installing git</a>
-  <ul class="collapse">
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  <li><a href="#mac-osx" id="toc-mac-osx" class="nav-link" data-scroll-target="#mac-osx">Mac OSX</a></li>
-  </ul></li>
+  <li><a href="#installing-git" id="toc-installing-git" class="nav-link" data-scroll-target="#installing-git">Installing git</a></li>
   <li><a href="#setting-up-your-git-identity" id="toc-setting-up-your-git-identity" class="nav-link" data-scroll-target="#setting-up-your-git-identity">Setting up your <code>git</code> identity</a>
   <ul class="collapse">
   <li><a href="#setup-your-profile" id="toc-setup-your-profile" class="nav-link" data-scroll-target="#setup-your-profile">Setup your profile</a></li>
   </ul></li>
-  <li><a href="#using-git" id="toc-using-git" class="nav-link" data-scroll-target="#using-git">Using Git</a></li>
   <li><a href="#clone-a-repository" id="toc-clone-a-repository" class="nav-link" data-scroll-target="#clone-a-repository">Clone a repository</a></li>
-  <li><a href="#tracking-your-work" id="toc-tracking-your-work" class="nav-link" data-scroll-target="#tracking-your-work">Tracking your work</a></li>
-  <li><a href="#exploring-git-history" id="toc-exploring-git-history" class="nav-link" data-scroll-target="#exploring-git-history">Exploring git history</a>
+  <li><a href="#tracking-your-work" id="toc-tracking-your-work" class="nav-link" data-scroll-target="#tracking-your-work">Tracking your work</a>
   <ul class="collapse">
-  <li><a href="#paging-the-log" id="toc-paging-the-log" class="nav-link" data-scroll-target="#paging-the-log">Paging the Log</a></li>
+  <li><a href="#adding-a-new-file-to-the-repository" id="toc-adding-a-new-file-to-the-repository" class="nav-link" data-scroll-target="#adding-a-new-file-to-the-repository">Adding a new file to the repository</a></li>
+  <li><a href="#tracking-changes-to-data" id="toc-tracking-changes-to-data" class="nav-link" data-scroll-target="#tracking-changes-to-data">Tracking changes to data</a></li>
+  <li><a href="#control-the-repository-history" id="toc-control-the-repository-history" class="nav-link" data-scroll-target="#control-the-repository-history">Control the repository history</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -230,16 +227,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This session will cover:</p>
 <ul>
-<li>Setting up <code>git</code> on computer
+<li>Setting up <code>git</code> on your computer
 <ul>
 <li>Installing git</li>
 <li>Setting up your identity</li>
 </ul></li>
-<li>git basic workflow using RStudio
+<li>Basic git workflow
 <ul>
-<li>Cloning a Repository from GitHub to your computer using RStudio projects</li>
-<li>Tracking changes to your scripts</li>
-<li>Pushing your changes to GitHub</li>
+<li>Cloning a repository from GitHub</li>
+<li>Tracking changes: staging and committing files</li>
+<li>Inspecting changes with <code>git diff</code> and <code>git log</code></li>
+<li>Restoring previous versions of a file</li>
 </ul></li>
 </ul>
 <section id="setting-up-git-on-your-computer" class="level1">
@@ -250,45 +248,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It should return something like above. <strong>If you get an error, you will have to install git</strong></p>
 <section id="installing-git" class="level2">
 <h2 class="anchored" data-anchor-id="installing-git">Installing git</h2>
-<p>You can download a copy of <code>git</code> here: https://git-scm.com/downloads and follow the instructions according to your Operating System.</p>
-<section id="windows" class="level3">
-<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<p>You can download and install <code>git</code> from here: <a href="" target="_blank">https://git-scm.com/install/</a> and follow the instructions according to your Operating System.</p>
+<p>Depending on your OS, you might have to follow different steps to install <code>git</code> on your computer:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><i class="bi-windows " style="" role="img" aria-hidden="true"></i> Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><i class="bi-apple " style="" role="img" aria-hidden="true"></i> Mac OSX</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>You can keep the options to default during the installation, until you reach <code>Configuring the terminal emulator to use with Git Bash</code> -&gt; be sure <code>Use MinTTY</code> is selected. This will install both git and a set of useful command-line tools using a trimmed down Bash shell.</p>
-</section>
-<section id="mac-osx" class="level3">
-<h3 class="anchored" data-anchor-id="mac-osx">Mac OSX</h3>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Depending on the version, you might have to run a few commands from the terminal. Please refer to the <code>README.txt</code> that comes with the download regarding the exact steps to follow.</p>
-</section>
+</div>
+</div>
+</div>
 </section>
 <section id="setting-up-your-git-identity" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-your-git-identity">Setting up your <code>git</code> identity</h2>
-<p>Before you start using git on any computer, you will have to set your identity on your system, as every snapshot of files is associated with the user who implemented the modifications to the file(s).</p>
+<p>Before you start using git on any computer, you should set your identity on your system, as every snapshot of files is associated with the user who implemented the modifications to the file(s).</p>
 <p>Open the <code>Terminal</code> or <code>git bash</code> and then type the following commands.</p>
 <section id="setup-your-profile" class="level3">
 <h3 class="anchored" data-anchor-id="setup-your-profile">Setup your profile</h3>
-<section id="at-the-commande-line" class="level4">
-<h4 class="anchored" data-anchor-id="at-the-commande-line">At the commande line</h4>
+<section id="at-the-command-line" class="level4">
+<h4 class="anchored" data-anchor-id="at-the-command-line">At the command line</h4>
 <p>If you are not sure if you have already set your git identity you can check this running this command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you identity is not set yet, you need to provide your name and email (we recommend to use the same email as used when setting your GitHub account):</p>
+<p>If your identity is not set yet, you need to provide your name and email (we recommend to use the same email as used when setting your GitHub account):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"your Full Name"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"your Email"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="optional" class="level5">
-<h5 class="anchored" data-anchor-id="optional">Optional</h5>
-<p>Check that everything is correct:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Modify everything at the same time:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--edit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Set your text editor:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--system</span> core.editor nano</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here <a href="https://www.nano-editor.org"><code>nano</code></a> is used as example; you can choose most of the text editor you might have installed on your computer (atom, sublime, notepad++ …).</p>
-<p>Problem with any of those steps? Check out Jenny Brian <a href="http://happygitwithr.com/troubleshooting.html" target="_blank">Happy git trouble shooting section</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Optional: additional <code>git config</code> commands
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Edit your git config file directly in your text editor:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--edit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Set your default text editor (e.g.&nbsp;<a href="https://www.nano-editor.org" target="_blank"><code>nano</code></a>, <code>notepad</code>, <code>code</code>, etc.):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor nano</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Text editor for Windows users
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Outside of Git Bash, <code>notepad</code> is a good default:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor notepad</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Problem with any of those steps?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Check out Jenny Brian <a href="http://happygitwithr.com/troubleshooting.html" target="_blank">Happy git trouble shooting section</a></p>
+</div>
+</div>
 </section>
 </section>
-</section>
-</section>
-<section id="using-git" class="level2">
-<h2 class="anchored" data-anchor-id="using-git">Using Git</h2>
 </section>
 <section id="clone-a-repository" class="level2">
 <h2 class="anchored" data-anchor-id="clone-a-repository">Clone a repository</h2>
@@ -302,205 +336,460 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you not have yet your <code>favorite-desserts</code> GitHub repository, please follow those <a href="https://ucsb-library-research-data-services.github.io/reproducible-lab/01-handson_github_website.html">steps</a></p>
+<p>If you do not have your <code>favorite-desserts</code> GitHub repository, please follow those <a href="./handson_github_website.html">steps</a></p>
 </div>
 </div>
-<p>Navigate to the folder (e.g <code>cd ~/Documents</code>) where you want to save your repository and run the following command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/brunj7/favorite-desserts.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Navigate to the folder (e.g <code>cd ~/Documents</code>) where you want to save your repository and run the following command (replace <code>&lt;your-github-username&gt;</code> with your actual GitHub username):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/<span class="op">&lt;</span>your-github-username<span class="op">&gt;</span>/favorite-desserts.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should have a new folder on your local machine named favorite-desserts after your repository :</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Go inside the repository:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> favorite-desserts</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>In PowerShell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In PowerShell you can run <code>ls</code> or <code>dir</code> to list the content of a directory, and <code>cd</code> to change directory. To replicate the <code>ls -al</code> command, you can run <code>ls -Force</code> or <code>dir -Force</code> to show all files, including hidden ones.</p>
+</div>
+</div>
 <p>This should return the exact same content that is currently on GitHub!</p>
 </section>
 <section id="tracking-your-work" class="level2">
 <h2 class="anchored" data-anchor-id="tracking-your-work">Tracking your work</h2>
-<p>Let’s create a text file called <code>index.md</code> and add it to our repository. The file will later be converted into a webpage by GitHub pages. We’ll write the file using a syntax called Markdown, which is why we use the <code>.md</code> extensions.</p>
-<p>Type the text below, replacing the names with people you know:</p>
-<pre><code>## Listing of my favorite desserts
-
-- Julien, crepes
-</code></pre>
-<p>Exit nano and save your changes.</p>
-<p>Check it worked:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat index.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You should see the content you just typed!</p>
-<p>If we check the status of our project again, Git tells us that it’s noticed the new file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>On branch main
-
-No commits yet
-
-Untracked files:
-   (use "git add &lt;file&gt;..." to include in what will be committed)
-
-    index.md
-
-nothing added to commit but untracked files present (use "git add" to track)</code></pre>
-<p>The “untracked files” message means that there’s a file in the directory that Git isn’t keeping track of. We can tell Git to track a file using <code>git add</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add index.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and then check that the right thing happened:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>On branch main
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached &lt;file&gt;..." to unstage)
-
-    new file:   index.md
-</code></pre>
-<p>Git now knows that it’s supposed to keep track of <code>index.md</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"start new webpage"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main (root-commit) f22b25e] Start new webpage
- 1 file changed, 1 insertion(+)
- create mode 100644 index.md</code></pre>
-<p>When we run <code>git commit</code>, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a commit (revision) and its short identifier is <code>f22b25e</code>. Your commit may have another identifier.</p>
-<p>We use the <code>-m</code> flag (for “message”) to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run <code>git commit</code> without the <code>-m</code> option, Git will launch <code>nano</code> (or whatever other editor we configured as <code>core.editor</code>) so that we can write a longer message.</p>
-<p>Good commit messages start with a brief (&lt;50 characters) statement about the changes made in the commit. Generally, the message should complete the sentence “If applied, this commit will” <commit message="" here="">. If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.</commit></p>
-<p>If we run <code>git status</code> now:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>On branch main
-nothing to commit, working tree clean</code></pre>
-<p>it tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: ...
-Date:   Thu Aug 22 09:51:46 2013 -0400
-
-    start new webpage</code></pre>
-<p><code>git log</code> lists all commits made to a repository in reverse chronological order. The listing for each commit includes the commit’s full identifier (which starts with the same characters as the short identifier printed by the <code>git commit</code> command earlier), the commit’s author, when it was created, and the log message Git was given when the commit was created.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Where Are My Changes?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If we run <code>ls</code> at this point, we will still see just one file called <code>index.md</code>. That’s because Git saves information about files’ history in the special <code>.git</code> directory mentioned earlier so that our filesystem doesn’t become cluttered (and so that we can’t accidentally edit or delete an old version).</p>
-</div>
-</div>
-<p>Let’s adds more information to the file. (Again, we’ll edit with <code>nano</code> and then <code>cat</code> the file to show its contents; you may use a different editor, and don’t need to <code>cat</code>.)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano index.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>## Listing of my favorite desserts
-
-- Julien, crepes
-- Sophia, chocolate
-</code></pre>
-<p>When we run <code>git status</code> now, it tells us that a file it already knows about has been modified:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>On branch main
-Changes not staged for commit:
-  (use "git add &lt;file&gt;..." to update what will be committed)
-  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
-
-    modified:   index.md
-
-no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
-<p>The last line is the key phrase: “no changes added to commit”.</p>
-<p>We have changed this file, but we haven’t told Git we will want to save those changes (which we do with <code>git add</code>) nor have we saved them (which we do with <code>git commit</code>). So let’s do that now. It is good practice to always review our changes before saving them. We do this using <code>git diff</code>.</p>
-<p>This shows us the differences between the current state of the file and the most recently saved version:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>diff --git a/index.md b/index.md
-index 7d781a7..bbb33fe 100644
---- a/index.md
-+++ b/index.md
-@@ -1 +1,3 @@
-## Listing of my favorite desserts
-
-- Julien, crepes
-+ - Sophia, chocolate
-</code></pre>
-<p>The output is cryptic because it is actually a series of commands for tools like editors and <code>patch</code> telling them how to reconstruct one file given the other. If we break it down into pieces:</p>
+<p>Let’s start tracking our work using git. For this exercise, we want to accomplish the following:</p>
 <ol type="1">
-<li>The first line tells us that Git is producing output similar to the Unix <code>diff</code> command comparing the old and new versions of the file.</li>
-<li>The second line tells exactly which versions of the file Git is comparing; <code>7d781a7</code> and <code>bbb33fe</code> are unique computer-generated labels for those versions.</li>
-<li>The third and fourth lines once again show the name of the file being changed.</li>
-<li>The remaining lines are the most interesting, they show us the actual differences and the lines on which they occur. In particular, the <code>+</code> marker in the first column shows where we added a line.</li>
+<li>Create a new Python script called <code>desserts.py</code> and add it to our repository.</li>
+<li>Copy and paste the code provided in the <code>desserts.py</code> file and save the change as a commit.</li>
+<li>Add a new dessert to the csv list and save the change as a commit.</li>
+<li>Edit the main function in the script to include a destination path for the csv file and save the change as a commit.</li>
 </ol>
-<p>After reviewing our change, it’s time to commit it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"add Sophia"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>On branch main
-Changes not staged for commit:
-  (use "git add &lt;file&gt;..." to update what will be committed)
-  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
-
-    modified:   index.md
-
-no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
-<p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add index.md</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"add Sophia"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>[main 019f377] add Sophia
- 1 file changed, 1 insertions(+)</code></pre>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="adding-a-new-file-to-the-repository" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-new-file-to-the-repository">Adding a new file to the repository</h3>
+<p>From the command line, create a new empty file called <code>desserts.py</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> desserts.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>In PowerShell
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our changes in stages and capture changes in logical portions rather than only large batches. For example, suppose we’re adding a few citations to relevant research to our thesis. We might want to commit those additions, and the corresponding bibliography entries, but <em>not</em> commit some of our work drafting the conclusion (which we haven’t finished yet).</p>
-<p>To allow for this, Git has a special <em>staging area</em> where it keeps track of things that have been added to the current changeset but not yet committed.</p>
+<p><code>touch</code> is not available in PowerShell. Use <code>New-Item</code> instead:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">New-Item</span> desserts.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>Next, copy and paste the following code into the <code>desserts.py</code> file (use nano or any text editor you prefer):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_csv(file_path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">dict</span>]:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, mode<span class="op">=</span><span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        csv_reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> [row <span class="cf">for</span> row <span class="kw">in</span> csv_reader]</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_dessert(data: <span class="bu">list</span>[<span class="bu">dict</span>], rank: <span class="bu">int</span>, dessert: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">dict</span>]:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">any</span>(row[<span class="st">'dessert'</span>] <span class="op">==</span> dessert <span class="cf">for</span> row <span class="kw">in</span> data):</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>dessert<span class="sc">}</span><span class="ss"> is already in the list. No changes made."</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> data</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> data:</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">int</span>(row[<span class="st">'rank'</span>]) <span class="op">&gt;=</span> rank:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>            row[<span class="st">'rank'</span>] <span class="op">=</span> <span class="bu">str</span>(<span class="bu">int</span>(row[<span class="st">'rank'</span>]) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    data.append({<span class="st">'rank'</span>: <span class="bu">str</span>(rank), <span class="st">'dessert'</span>: dessert})</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    data.sort(key<span class="op">=</span><span class="kw">lambda</span> x: <span class="bu">int</span>(x[<span class="st">'rank'</span>]))</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_csv(data: <span class="bu">list</span>[<span class="bu">dict</span>], file_path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, mode<span class="op">=</span><span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        fieldnames <span class="op">=</span> [<span class="st">'rank'</span>, <span class="st">'dessert'</span>]</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        writer <span class="op">=</span> csv.DictWriter(<span class="bu">file</span>, fieldnames<span class="op">=</span>fieldnames,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                                lineterminator<span class="op">=</span><span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        writer.writeheader()</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> data:</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>            writer.writerow(item)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main(rank: <span class="bu">int</span>, dessert: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Read the iconic desserts CSV, </span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co">    insert a dessert at the given rank, </span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co">    and save the updated list.</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co">        rank (int): Rank at which to insert the dessert.</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="co">        dessert (str): Name of the dessert to add.</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> read_csv(<span class="st">'iconic_desserts.csv'</span>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    new_data <span class="op">=</span> add_dessert(data, rank, dessert)</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    to_csv(new_data, <span class="st">'iconic_desserts.csv'</span>)</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Added </span><span class="sc">{</span>dessert<span class="sc">}</span><span class="ss"> at rank </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add a new dessert to the list at rank 37</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    main(<span class="dv">37</span>, <span class="st">'Tiramisu'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>About the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The code defines a Python script that manages a list of desserts stored in a CSV file. It includes functions to read the CSV file, add a new dessert to the list while maintaining the correct ranking, and write the updated list back to the CSV file. The <code>main</code> function demonstrates how to use these functions by adding “Tiramisu” at rank 37 in the list of iconic desserts.</p>
+</div>
+</div>
+</div>
+<section id="check-git-workspace-status" class="level4">
+<h4 class="anchored" data-anchor-id="check-git-workspace-status">Check git workspace status</h4>
+<p>Next, we can use <code>git</code> to check the status of our repository by running the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output should be similar to this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> branch is up to date with <span class="st">'origin/main'</span>.</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">desserts.py</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> added to commit but untracked files present <span class="er">(</span><span class="ex">use</span> <span class="st">"git add"</span> to track<span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="add-the-file-to-the-staging-area" class="level4">
+<h4 class="anchored" data-anchor-id="add-the-file-to-the-staging-area">Add the file to the staging area</h4>
+<p>The list of untracked files includes all the files that are in your repository but are not being tracked by <code>git</code>. To start tracking the <code>desserts.py</code> file, we need to add it to the staging area:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add desserts.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now, if we check the status again, we should see that the <code>desserts.py</code> file is now being tracked:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> branch is up to date with <span class="st">'origin/main'</span>.</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Changes</span> to be committed:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git restore --staged &lt;file&gt;..."</span> to unstage<span class="kw">)</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">new</span> file:   desserts.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="committing-the-changes" class="level4">
+<h4 class="anchored" data-anchor-id="committing-the-changes">Committing the changes</h4>
+<p>At this moment, <code>git</code> is tracking the <code>desserts.py</code> file, but the changes we made to the file are not “saved” in the git history yet. This is called a <strong>commit</strong>, which is a snapshot of the state of the file(s) at a given moment in time. To create a commit, we need to run the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"add desserts.py script"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will create a new commit with the message <em>“add desserts.py script”</em>. The <code>-m</code> flag is used to specify the commit message. You can use any message you want, but it should be descriptive of the changes you made in that commit.</p>
+</section>
+</section>
+<section id="tracking-changes-to-data" class="level3">
+<h3 class="anchored" data-anchor-id="tracking-changes-to-data">Tracking changes to data</h3>
+<p>The script we just created is designed to include a new dessert in the <code>iconic_desserts.csv</code> file. Running the script will result in a new dessert (Tiramisu) being added to the list at rank 37, and the ranks of the other desserts being updated accordingly. Let’s run the script to see how it works:</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Quick Python check
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Before running the script, confirm which Python command works on your machine:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you get an error, try:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">--version</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-3</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use the command that returns a Python 3 version to run the script.</p>
+<p>If none of the above commands work, you will need to install Python on your machine. You can download it from <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a> and follow the instructions for your operating system.</p>
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> desserts.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Troubleshooting
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Some common issues that might arise when running the script and how to solve them:</p>
+<ul>
+<li><strong>command not found: python</strong>: Run <code>python --version</code> first; if needed use <code>python3 desserts.py</code> (macOS/Linux) or <code>py -3 desserts.py</code> (Windows).</li>
+<li><strong>FileNotFoundError: [Errno 2] No such file or directory: ‘iconic_desserts.csv’</strong>: Run the command from the folder that contains both files.</li>
+</ul>
+</div>
+</div>
+</div>
+<p>If the output shows the message <code>Added Tiramisu at rank 37.</code>, then the script ran successfully.</p>
+<p>We can use <code>git</code> to see what have changed in the <code>iconic_desserts.csv</code> file by using the <code>diff</code> command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff iconic_desserts.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The resulting output shows the differences between the current and the previous version of the file. Lines that start with a <code>-</code> were removed, and those that start with a <code>+</code> were added. The output should look something like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/iconic_desserts.csv b/iconic_desserts.csv</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">index</span> 351fb57..b80e86b 100644</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/iconic_desserts.csv</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/iconic_desserts.csv</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-35,8</span> +35,9 @@ rank,dessert</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a> <span class="ex">34,Chess</span> pie</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a> <span class="ex">35,Sour</span> cream pound cake</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">36,Key</span> lime pie</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-37,Cherry</span> pie</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-38,Seven-layer</span> bars</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-39,Coconut</span> cake</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-40,Brownies</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-41,Blondies</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="ex">+37,Tiramisu</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="ex">+38,Cherry</span> pie</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="ex">+39,Seven-layer</span> bars</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="ex">+40,Coconut</span> cake</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="ex">+41,Brownies</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="ex">+42,Blondies</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Commit changes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now is your turn to commit the changes made to the <code>iconic_desserts.csv</code> file. Follow the same steps as before and use the following commit message: “add Tiramisu to the list of iconic desserts”.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add iconic_desserts.csv</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"add Tiramisu to the list of iconic desserts"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
-<section id="exploring-git-history" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-git-history">Exploring git history</h2>
-<p>You can look at the history of what we’ve done so far:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It should look something like this:</p>
-<pre class="output"><code>commit d11d7e52ab98d3d4c18cde4c4a0bbeea3fe40983 (HEAD -&gt; main)
-Author: ...
-Date:   Thu Oct 19 12:07:51 2023 -0400
-
-    add Sophia
-
-commit 019f37773f9f18b77f508990df65e56a34df45de
-Author: ...
-Date:   Thu Oct 19 12:03:04 2023 -0400
-
-    start new webpage
-
-commit 8defaab26aa641a4233896ec68e603c541aa77b4
-Author: ...
-Date:   Thu Oct 19 12:01:17 2023 -0400
-
-    intial commit</code></pre>
-<section id="paging-the-log" class="level3">
-<h3 class="anchored" data-anchor-id="paging-the-log">Paging the Log</h3>
-<p>When the output of <code>git log</code> is too long to fit in your screen, <code>git</code> uses a program to split it into pages of the size of your screen. When this “pager” is called, you will notice that the last line in your screen is a <code>:</code>, instead of your usual prompt.</p>
+<section id="control-the-repository-history" class="level3">
+<h3 class="anchored" data-anchor-id="control-the-repository-history">Control the repository history</h3>
+<p>So far, we have made changes incrementally by adding and committing new changes to the repository. However, we can also revert to a previous state of the repository. Let’s explore the current history of our repository first by using the <code>log</code> command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output should look something like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> a3a7278bc511ac1047d722bb9833773fd5636a90 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> ...</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Apr 14 15:39:59 2026 <span class="at">-0700</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">add</span> Tiramisu to the list of iconic desserts</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 227d6cba9fa442459bd4c22054fa640600db8cb4</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> ...</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Apr 14 15:13:59 2026 <span class="at">-0700</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">add</span> desserts.py script</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 14a46c09a8dde829ea44bfe5d02492e0b926b74d <span class="er">(</span><span class="ex">origin/main,</span> origin/HEAD<span class="kw">)</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> ...</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Apr 14 14:52:37 2026 <span class="at">-0700</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Add</span> iconic_desserts.csv</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 7107af1488152b062ef9c3e60bb54134a6320fe4</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> ...</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Apr 14 14:50:23 2026 <span class="at">-0700</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Adding</span> Your<span class="st">'s favorite dessert</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="st">commit 8fe3ad4ca5c5ad7db4b1ba19e03177407a70bf51</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="st">Author: ...</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="st">Date:   Tue Apr 14 14:39:28 2026 -0700</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="st">    Initial commit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>About the log output
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li>To get out of the pager, press <kbd>Q</kbd>.</li>
-<li>To move to the next page, press <kbd>Spacebar</kbd>.</li>
-<li>To search for <code>some_word</code> in all pages, press <kbd>/</kbd> and type <code>some_word</code>. Navigate through matches pressing <kbd>N</kbd>.</li>
+<li>Each commit is identified by a unique hash (e.g., <code>a3a7278bc511ac1047d722bb9833773fd5636a90</code>).</li>
+<li>The <code>HEAD</code> pointer indicates the current commit that your repository is on.</li>
+<li>The <code>Author</code> and <code>Date</code> fields show who made the commit and when.</li>
+<li>The commit message (e.g., “add Tiramisu to the list of iconic desserts”) describes the changes made in that commit.</li>
+<li>The <code>origin/main</code> indicates that the commit is also present in the remote repository on GitHub.</li>
 </ul>
+</div>
+</div>
+</div>
 <p>To avoid having <code>git log</code> cover your entire terminal screen, you can limit the number of commits that Git lists by using <code>-N</code>, where <code>N</code> is the number of commits that you want to view. For example, if you only want information from the last commit you can use:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">-1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>commit d11d7e52ab98d3d4c18cde4c4a0bbeea3fe40983 (HEAD -&gt; main)
-Author: ...
-Date:   Thu Oct 19 12:07:51 2023 -0400
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-1</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> a3a7278bc511ac1047d722bb9833773fd5636a90 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> ...</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Apr 14 15:39:59 2026 <span class="at">-0700</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">add</span> Tiramisu to the list of iconic desserts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Another option to reduce the quantity of information is using the <code>--oneline</code> option:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">a3a7278</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">add</span> Tiramisu to the list of iconic desserts</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="ex">227d6cb</span> add desserts.py script</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="ex">14a46c0</span> <span class="er">(</span><span class="ex">origin/main,</span> origin/HEAD<span class="kw">)</span> <span class="ex">Add</span> iconic_desserts.csv</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="ex">7107af1</span> Adding Your<span class="st">'s favorite dessert</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="st">8fe3ad4 Initial commit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="restore-iconic_desserts.csv-to-the-previous-state" class="level4">
+<h4 class="anchored" data-anchor-id="restore-iconic_desserts.csv-to-the-previous-state">Restore iconic_desserts.csv to the previous state</h4>
+<p>Our current workflow has an issue: we are altering the <code>iconic_desserts.csv</code> file directly, which means that if we make a mistake, we might lose the original content of the file. Let’s start by restoring the <code>iconic_desserts.csv</code> file to the previous state before we added Tiramisu.</p>
+<p>To achieve this, we can use the <code>checkout</code> command to restore the file to the state it was in the previous commit:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout HEAD~1 iconic_desserts.csv</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Success message should be similar to this:</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Updated</span> 1 path from a4090b9</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>About reverting changes
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Usually the way to revert changes depends if the file is staged, already commited, if is currently modified, etc. Depending the case, you might have to use different commands, such as <code>git restore</code>, <code>git reset</code>, <code>git revert</code>, etc. For more information on how to revert changes in different scenarios, check out the <a href="https://git-scm.com/docs" target="_blank">Git documentation</a>, particularly the commands under the section “Basic Snapshotting” and “Patching”.</p>
+</div>
+</div>
+</div>
+<p>What we’re doing here is telling <code>git</code> to restore the <code>iconic_desserts.csv</code> file to the state it was in the previous commit (indicated by <code>HEAD~1</code>). After running this command, the <code>iconic_desserts.csv</code> file should be back to its original state before we added Tiramisu and moved to the staging area. Let’s commit this change to the repository:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"restore iconic_desserts.csv to its original state"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="edit-desserts.py" class="level4">
+<h4 class="anchored" data-anchor-id="edit-desserts.py">Edit <code>desserts.py</code></h4>
+<p>Open the <code>desserts.py</code> file and edit the <code>main</code> function so it looks like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main(rank: <span class="bu">int</span>, dessert: <span class="bu">str</span>, destination_path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Read the iconic desserts CSV, </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">    insert a dessert at the given rank, </span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">    and save the updated list.</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">        rank (int): Rank at which to insert the dessert.</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">        dessert (str): Name of the dessert to add.</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">        destination_path (str): Path to save the updated CSV file.</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> read_csv(<span class="st">'iconic_desserts.csv'</span>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    new_data <span class="op">=</span> add_dessert(data, rank, dessert)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    to_csv(new_data, destination_path)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Added </span><span class="sc">{</span>dessert<span class="sc">}</span><span class="ss"> at rank </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add a new dessert to the list at rank 37</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    main(<span class="dv">37</span>, <span class="st">'Tiramisu'</span>, <span class="st">'updated_iconic_desserts.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Save the file and run <code>git diff</code> to see the changes you made:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff desserts.py</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The output should look something like this:</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/desserts.py b/desserts.py</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="ex">index</span> 792959f..a199a68 100644</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/desserts.py</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/desserts.py</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-29,7</span> +29,7 @@ def to_csv<span class="er">(</span><span class="ex">data:</span> list<span class="pp">[</span><span class="ss">dict</span><span class="pp">]</span>, file_path: str<span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> None:</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>         <span class="cf">for</span> item <span class="kw">in</span> data:</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>             <span class="ex">writer.writerow</span><span class="er">(</span><span class="ex">item</span><span class="kw">)</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-def</span> main<span class="er">(</span><span class="ex">rank:</span> int, dessert: str<span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> None:</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="ex">+def</span> main<span class="er">(</span><span class="ex">rank:</span> int, dessert: str, destination_path: str<span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> None:</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>     <span class="st">"""Read the iconic desserts CSV, </span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="st">     insert a dessert at the given rank, </span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="st">     and save the updated list.</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="st">@@ -37,12 +37,13 @@ def main(rank: int, dessert: str) -&gt; None:</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="st">     Args:</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="st">         rank (int): Rank at which to insert the dessert.</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="st">         dessert (str): Name of the dessert to add.</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="st">+       destination_path (str): Path to save the updated CSV file.</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="st">     """</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>     <span class="ex">data</span> = read_csv<span class="er">(</span><span class="st">'iconic_desserts.csv'</span><span class="kw">)</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>     <span class="ex">new_data</span> = add_dessert<span class="er">(</span><span class="ex">data,</span> rank, dessert<span class="kw">)</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span>    to_csv<span class="er">(</span><span class="ex">new_data,</span> <span class="st">'iconic_desserts.csv'</span><span class="kw">)</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span>    to_csv<span class="er">(</span><span class="ex">new_data,</span> destination_path<span class="kw">)</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>     <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Added {dessert} at rank {rank}."</span><span class="kw">)</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span> <span class="ex">__name__</span> == <span class="st">"__main__"</span>:</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Add a new dessert to the list at rank 37</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span>    main<span class="er">(</span><span class="ex">37,</span> <span class="st">'Tiramisu'</span><span class="kw">)</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="ex">+</span>    main<span class="er">(</span><span class="ex">37,</span> <span class="st">'Tiramisu'</span>, <span class="st">'updated_iconic_desserts.csv'</span><span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now, add the changes to the staging area and commit them to the repository:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add desserts.py</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"edit main function to include destination path for csv file"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="wrapping-up" class="level4">
+<h4 class="anchored" data-anchor-id="wrapping-up">Wrapping up</h4>
+<ol type="1">
+<li>Run the <code>desserts.py</code> script again to add a new dessert to the list and save the updated list in a new file called <code>updated_iconic_desserts.csv</code>.</li>
+<li>Use <code>git</code> to track the changes to the <code>updated_iconic_desserts.csv</code> file and commit those changes to the repository with the message “add Tiramisu to the updated list of iconic desserts”.</li>
+</ol>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> desserts.py</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add updated_iconic_desserts.csv</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"add Tiramisu to the updated list of iconic desserts"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>At the end, the history of your repository should look something like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="ex">cf47aa1</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">add</span> Tiramisu to the updated list of iconic desserts</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="ex">6d7cbbf</span> edit main function to include destination path for csv file</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="ex">ab19fd9</span> restore iconic_desserts.csv to its original state</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="ex">a3a7278</span> add Tiramisu to the list of iconic desserts</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="ex">227d6cb</span> add desserts.py script</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="ex">14a46c0</span> <span class="er">(</span><span class="ex">origin/main,</span> origin/HEAD<span class="kw">)</span> <span class="ex">Add</span> iconic_desserts.csv</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="ex">7107af1</span> Adding Your<span class="st">'s favorite dessert</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="st">8fe3ad4 Initial commit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-    add Sophia</code></pre>
-<p>You can also reduce the quantity of information using the <code>--oneline</code> option:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>d11d7e5 (HEAD -&gt; main) add Sophia
-019f377 start new webpage
-8defaab initial commit</code></pre>
-<p>You can also combine the <code>--oneline</code> option with others. One useful combination adds <code>--graph</code> to display the commit history as a text-based graph and to indicate which commits are associated with the current <code>HEAD</code>, the current branch <code>main</code>, or [other Git references][git-references]:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span> <span class="at">--graph</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre class="output"><code>* d11d7e5 (HEAD -&gt; main) add Sophia
-* 019f377 start new webpage
-* 8defaab initial commit</code></pre>
 
-
+</section>
 </section>
 </section>
 </section>
