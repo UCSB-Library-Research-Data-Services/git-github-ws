@@ -4,18 +4,29 @@ title: "Code Sharing with GitHub"
 
 ## Sending changes back to GitHub
 
-Now that we have created these two commits on our local machine, our local version of the repository is different from the version on GitHub. You can see this when running `git status` at the beginning of the message you should have  "Your branch is ahead of 'origin/master' by two commits". This can be translated as you have two additional commits on your local machine that you never shared back to the remote repository on GitHub. Open your favorite web browser and look at the content of your repository on GitHub. You will see there is no `index.md` file on GitHub.
+Now that we have created some commits on our local machine, our local history of the repository is different from the one on GitHub. You can see this when running `git status` at the beginning of the message you should have  "Your branch is ahead of 'origin/master' by `N` commits". This can be translated as you have `N` additional commits on your local machine that you haven't shared back to the remote repository on GitHub. 
 
+Open your favorite web browser and look at the content of your repository on GitHub. You will see there is no `desserts.py` file on GitHub.
 
-There are two git commands to exchange between local and remote versions of a repository:
+### Downstream and upstream
 
-- `pull`: git will get the latest remote (GitHub in our case) version and try to merge it with your local version
-- `push`: git will send your local version to the remote version of the repository 
+In `git` lingo, the local version of the repository is called the **downstream** and the remote version of the repository (on GitHub) is called the **upstream**.
 
-Before sending your local version to the remote, you should always get the latest remote version first. In other words, **you should pull first and push second**. This is the way git protects the remote version against incompatibilities with the local version. You always deal with potential problems on your local machine. Therefore your sequence will always be:
+If we want to synchronize the upstream with the downstream, we can use two git commands:
 
-1. `pull`
-2. `push`
+- {{< bi arrow-down >}} `pull`: git will get the latest remote (GitHub in our case) version and try to merge it with your local version
+- {{< bi arrow-up >}} `push`: git will send your local version to the remote version of the repository 
+
+Before sending your local version to the remote, you should ensure that you have the latest remote version first. In other words, **you should pull first and push second**. This is the way git protects the remote version against incompatibilities with the local version.
+
+::: {.callout-note appearance="simple" collapse="true"}
+## Git workflows
+
+Although the pull-then-push workflow is the most common one, there are other workflows that can be used when working with git. For example, you can push your local version to GitHub without pulling first. This is called a "force push" and it can be useful in some cases, but it can also cause problems if you are not careful. Another option is using `fetch` instead of `pull`. The `fetch` command will get the latest remote version without trying to merge it with your local version. This can be useful if you want to review the changes on the remote version before merging them with your local version.
+
+You can explore more about git workflows in Scott Chacon and Ben Straub, [_Pro Git_](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) book.
+
+:::
 
 
 ## GitHub credentials
