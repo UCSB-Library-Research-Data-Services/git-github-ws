@@ -71,14 +71,14 @@ A few highlights of what you can do with GitHub:
 
 This is the default landing page when you log into your account. It provides a mix of the most recent resources and activities of your and your collaborators' actions, as well as some resources relevant to your work. The dashboard therefore changes on a regular basis. Once logged in, you can access your dashboard at <https://github.com>
 
-![GitHub dasboard view](img/github_overview-01_dashboard.png)
+![GitHub dasboard view](img/github_overview-01_dashboard.png){fig-alt="Overview of a GitHub dashboard page"}
 
 
 ### GitHub User page
 
 This page can be reached using the following URL: https://github.com/`username`. For my user (`brunj7`) it would be: <https://github.com/brunj7>. It is a great space for you to provide some information about yourself and the main repositories you are working on. It also lists the GitHub Organizations you are part of. But more importantly, Users own repositories to host and share their code. You can list repositories from a User by clicking on the _repositories_ tab in the main GitHub menu bar at the top.
 
-![GitHub user profile view](img/github_overview-02_user.png)
+![GitHub user profile view](img/github_overview-02_user.png){fig-alt="Overview of a GitHub account page"}
 
 
 ### GitHub Organization page
@@ -86,7 +86,7 @@ This page can be reached using the following URL: https://github.com/`username`.
 We will talk more about GitHub Organizations later. In a nutshell, organizations are like groups or teams that users can be members of. Like Users, Organizations can have a landing page and own repositories. However, they add several perks in terms of user management. Similarly to Users, you can access repositories from an Organization by clicking on the _repositories_ tab in the main GitHub menu bar at the top. You can access an organization's page similarly to a user: https://github.com/`organization-name`; e.g.  <https://github.com/UCSB-Library-Research-Data-Services>
 
 
-![GitHub organization view](img/github_overview-03_organization.png){fig-align="center" width=90%}
+![GitHub organization view](img/github_overview-03_organization.png){fig-align="center" width=90% fig-alt="Overview of a GitHub organization page"}
 
 
 ### Let's look at a repository on GitHub
@@ -95,19 +95,19 @@ This screen shows the copy of a repository stored on GitHub,
 with its <span style="color:red">list of files</span>, <span style="color:green">when the files and directories were last modified</span>, 
 and <span style="color:blue">some information on who made the most recent changes.</span>  
 
-![GitHub reposiotry view](img/ss3sim-github_colored.png){fig-align="center" width=80%}
+![GitHub reposiotry view](img/ss3sim-github_colored.png){fig-align="center" width=80% fig-alt="Overview of a repository on GitHub"}
 
 If we drill into the 
 "<span style="color:orange">commits</span>" for the repository, we can see the history of changes made to all of 
 the files.  Looks like `kellijohnson` and `seananderson` were fixing things in
 June and July:
 
-![GitHub reposiotry history](img/ss3sim-commits_colored.png){fig-align="center" width=80%}
+![GitHub reposiotry history](img/ss3sim-commits_colored.png){fig-align="center" width=80% fig-alt="Overview of a repository history on GitHub"}}
 
 And finally, if we drill into the changes made on June 13, we can see exactly what
 was changed in each file:
 
-![GitHub diff changes between versions](img/ss3sim-diff.png){fig-align="center" width=80%}
+![GitHub diff changes between versions](img/ss3sim-diff.png){fig-align="center" width=80% fig-alt="Overview of a differences between two versions of a file on GitHub"}
 
 Tracking these changes, and seeing how they relate to released versions of software and files
 is exactly what Git and GitHub are good for. We will show how they can really 

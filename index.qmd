@@ -26,4 +26,4 @@ title: "Introduction to git & GitHub"
 
 <br>
 
-![](img/rds_hex.png){fig-align="center" width=50% fig-alt="Research Data Service logo"}
+![](img/rds_hex.png){fig-align="center" width=50% fig-alt="Research Data Services logo"}
