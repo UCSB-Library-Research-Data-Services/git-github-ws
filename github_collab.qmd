@@ -48,7 +48,7 @@ You can find the latest guidelines on how to setup your personal GitHub token **
    - gist
    - all user actions
 
-   ![](img/github-token.png){width="65%"}
+   ![](img/github-token.png){width="65%" fig-alt="token with the above mentioned settings on GitHub website"}
 
 4. Then click the `Generate token` button at the bottom of the page.
 
