@@ -36,7 +36,7 @@ We want to log the information about people's favorite desserts using this repos
 
 - Create a repository using the following  [instructions](https://docs.github.com/en/github/getting-started-with-github/create-a-repo) steps 1-6
 
-![](img/github-dessert-repo.png)
+![](img/github-dessert-repo.png){fig-alt="Screenshot on information to provide to create a new repository on GitHub"}}
 
 ## Edit the README
 
@@ -45,7 +45,7 @@ We want to make the following changes:
    - Replace the title (first line starting with `#`) with something better! Maybe `Favorite Desserts`
    - Add your name and your favorite dessert below the title: e.g.  ` - Julien: crepes`
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig-alt="README content at the end of adding your name and favorite dessert "}
 knitr::include_graphics("img/github-readme_desserts.png")
 ```
 
@@ -57,13 +57,13 @@ knitr::include_graphics("img/github-readme_desserts.png")
 - Click _Commit changes_
 - Add a descriptive commit message, "add my favorite dessert"
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig-alt="Screenshot of a commit message box on GitHub website"}
 knitr::include_graphics("img/github-commit.png")
 ```
 
 - Click _Commit changes_ to confirm
 
-```{r commit-button, out.width="20%", echo=FALSE}
+```{r commit-button, out.width="20%", echo=FALSE, fig-alt="Green commit button on GitHub website"}
 knitr::include_graphics("img/github-commit-button.png")
 ```
 
