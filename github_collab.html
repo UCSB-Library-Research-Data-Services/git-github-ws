@@ -78,6 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-a036e2a4f833fdb5845ec118177f864c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/bootstrap-icons-1.13.1/bootstrap-icons.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -184,7 +185,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sending-changes-back-to-github" id="toc-sending-changes-back-to-github" class="nav-link active" data-scroll-target="#sending-changes-back-to-github">Sending changes back to GitHub</a></li>
+  <li><a href="#sending-changes-back-to-github" id="toc-sending-changes-back-to-github" class="nav-link active" data-scroll-target="#sending-changes-back-to-github">Sending changes back to GitHub</a>
+  <ul class="collapse">
+  <li><a href="#downstream-and-upstream" id="toc-downstream-and-upstream" class="nav-link" data-scroll-target="#downstream-and-upstream">Downstream and upstream</a></li>
+  </ul></li>
   <li><a href="#github-credentials" id="toc-github-credentials" class="nav-link" data-scroll-target="#github-credentials">GitHub credentials</a>
   <ul class="collapse">
   <li><a href="#setting-up-your-github-token" id="toc-setting-up-your-github-token" class="nav-link" data-scroll-target="#setting-up-your-github-token">Setting up your GitHub Token</a></li>
@@ -217,17 +221,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="sending-changes-back-to-github" class="level2">
 <h2 class="anchored" data-anchor-id="sending-changes-back-to-github">Sending changes back to GitHub</h2>
-<p>Now that we have created these two commits on our local machine, our local version of the repository is different from the version on GitHub. You can see this when running <code>git status</code> at the beginning of the message you should have “Your branch is ahead of ‘origin/master’ by two commits”. This can be translated as you have two additional commits on your local machine that you never shared back to the remote repository on GitHub. Open your favorite web browser and look at the content of your repository on GitHub. You will see there is no <code>index.md</code> file on GitHub.</p>
-<p>There are two git commands to exchange between local and remote versions of a repository:</p>
+<p>Now that we have created some commits on our local machine, our local history of the repository is different from the one on GitHub. You can see this when running <code>git status</code> at the beginning of the message you should have “Your branch is ahead of ‘origin/master’ by <code>N</code> commits”. This can be translated as you have <code>N</code> additional commits on your local machine that you haven’t shared back to the remote repository on GitHub.</p>
+<p>Open your favorite web browser and look at the content of your repository on GitHub. You will see there is no <code>desserts.py</code> file on GitHub.</p>
+<section id="downstream-and-upstream" class="level3">
+<h3 class="anchored" data-anchor-id="downstream-and-upstream">Downstream and upstream</h3>
+<p>In <code>git</code> lingo, the local version of the repository is called the <strong>downstream</strong> and the remote version of the repository (on GitHub) is called the <strong>upstream</strong>.</p>
+<p>If we want to synchronize the upstream with the downstream, we can use two git commands:</p>
 <ul>
-<li><code>pull</code>: git will get the latest remote (GitHub in our case) version and try to merge it with your local version</li>
-<li><code>push</code>: git will send your local version to the remote version of the repository</li>
+<li><i class="bi-arrow-down " style="" role="img" aria-hidden="true"></i> <code>pull</code>: git will get the latest remote (GitHub in our case) version and try to merge it with your local version</li>
+<li><i class="bi-arrow-up " style="" role="img" aria-hidden="true"></i> <code>push</code>: git will send your local version to the remote version of the repository</li>
 </ul>
-<p>Before sending your local version to the remote, you should always get the latest remote version first. In other words, <strong>you should pull first and push second</strong>. This is the way git protects the remote version against incompatibilities with the local version. You always deal with potential problems on your local machine. Therefore your sequence will always be:</p>
-<ol type="1">
-<li><code>pull</code></li>
-<li><code>push</code></li>
-</ol>
+<p>Before sending your local version to the remote, you should ensure that you have the latest remote version first. In other words, <strong>you should pull first and push second</strong>. This is the way git protects the remote version against incompatibilities with the local version.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Git workflows
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Although the pull-then-push workflow is the most common one, there are other workflows that can be used when working with git. For example, you can push your local version to GitHub without pulling first. This is called a “force push” and it can be useful in some cases, but it can also cause problems if you are not careful. Another option is using <code>fetch</code> instead of <code>pull</code>. The <code>fetch</code> command will get the latest remote version without trying to merge it with your local version. This can be useful if you want to review the changes on the remote version before merging them with your local version.</p>
+<p>You can explore more about git workflows in Scott Chacon and Ben Straub, <a href="https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows"><em>Pro Git</em></a> book.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="github-credentials" class="level2">
 <h2 class="anchored" data-anchor-id="github-credentials">GitHub credentials</h2>
@@ -252,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Copy your token to your clipboard and then push to GitHub from the command line using <code>git push</code>. When you are prompted for your password, copy your token.</p>
 <p>Only once it has worked and that your token as been cached by your OS password manager you can close the GitHub webpage displaying your token value.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -261,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Another option is to set up the method that is commonly used by many different services to authenticate access on the command line. This method is called Secure Shell Protocol (SSH). SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.</p>
 <p>SSH uses what is called a key pair. This is <strong>two</strong> keys that work together to validate access. One key is publicly known and called the <strong>public key</strong>, and the other key called the <strong>private key</strong> is kept private. Very descriptive names.</p>
