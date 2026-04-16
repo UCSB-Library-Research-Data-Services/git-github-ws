@@ -31,13 +31,17 @@ You can explore more about git workflows in Scott Chacon and Ben Straub, [_Pro G
 
 ## GitHub credentials
 
-Normally if you have already used GitHub tokens your Operating System (Windows, MacOSX, ...) should have cached the necessary credentials to log in to your GitHub account (necessary to be able to push (write) content to the remote repository).
+Normally if you have already used GitHub tokens your Operating System (Windows, MacOSX, ...) should have cached the necessary credentials to log in to your GitHub account (required to push (write) content to the remote repository).
 
 ### Setting up your GitHub Token
 
 You can find the latest guidelines on how to setup your personal GitHub token **[here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)**
 
-1. Choose a token name that is related to the machine you are using (not requires, but a good idea :) )
+Start by going to your GitHub account and click on your profile picture in the top right corner, then select `Settings` from the dropdown menu. In the left sidebar, click on `Developer settings`, then click on `Personal access tokens`, and finally click on `Tokens (classic)`. Or, click on the following link: [Personal Access Tokens\(classic\)](https://github.com/settings/tokens).
+
+Then click on the `Generate new token` button and select `Generate new token (classic)`.
+
+1. Choose a token name that is related to the machine you are using (is a good practice :) )
 
 2. Set the expiration date to `90 days`
 
@@ -45,8 +49,6 @@ You can find the latest guidelines on how to setup your personal GitHub token **
 
    - all repo actions
    - workflow
-   - gist
-   - all user actions
 
    ![](img/github-token.png){width="65%" fig-alt="token with the above mentioned settings on GitHub website"}
 
@@ -54,9 +56,15 @@ You can find the latest guidelines on how to setup your personal GitHub token **
 
 **DO NOT CLOSE the next page** as it will be the only time you can see your token.
 
-Copy your token to your clipboard and then push to GitHub from the command line using `git push`. When you are prompted for your password, copy your token.
+Copy your token to your clipboard and then push to GitHub from the command line using `git push`. When you are prompted for your password, paste your token.
 
-Only once it has worked and that your token as been cached by your OS password manager you can close the GitHub webpage displaying your token value.
+Once it works your token will be safely stored by your OS password manager. Then you can close the GitHub webpage displaying your token value.
+
+::: {.callout-tip appearance="simple" collapse="true"}
+## What if I forget my token?
+
+If you forget or lose your token, you can regenerate it by going back to the `Personal access tokens` page on GitHub, select the token you want to regenerate, and click on the `Regenerate` button. This will invalidate the old token and generate a new one. You will need to use the new token the next time you push to GitHub from the command line.
+:::
 
 :::{.callout-tip appearance="simple" collapse="true"}
 ### Connect to GitHub with SSH
@@ -159,23 +167,23 @@ drwxr-xr-x 1 brunj7  staff 197121  Mar 11  09:21 ../
 ```
 :::
 
+## Synchronize with GitHub
 
-Let's do it:
+Now that everything is set up, we can push our local version to the remote repository on GitHub.
+
+First, let's be sure that we have the latest version of the remote repository on our local machine:
 
 ```bash
 git pull
 ```
 
-Normally nothing should have changed on the remote
-
-Now we can push our changes to GitHub:
+Next, we can send (push) our changes to the remove repository on GitHub:
 
 ```bash
 git push
 ```
 
 Refresh the repository webpage, you should now see all the changes you have made locally in the previous section.
-
 
 
 ## Aknowledgements
