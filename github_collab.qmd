@@ -93,7 +93,7 @@ If SSH has been set up on the computer you're using, the public and private key 
 #### Not Set up:
 
 ```bash
-ls: cannot access '/Users/brunj7/.ssh': No such file or directory
+ls: cannot access '/Users/<your-username>/.ssh': No such file or directory
 ```
 
 Create an SSH key pair
@@ -110,13 +110,13 @@ If you are using a legacy system that doesn't support the Ed25519 algorithm, use
 
 ```
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/Users/brunj7/.ssh/id_ed25519):
+Enter file in which to save the key (/Users/<your-username>/.ssh/id_ed25519):
 ```
 
 We want to use the default file, so just press <kbd>Enter</kbd>.
 
 ```output
-Created directory '/Users/brunj7/.ssh'.
+Created directory '/Users/<your-username>/.ssh'.
 Enter passphrase (empty for no passphrase):
 ```
 
@@ -133,8 +133,8 @@ Enter same passphrase again:
 After entering the same passphrase a second time, we receive the confirmation
 
 ```
-Your identification has been saved in /Users/brunj7/.ssh/id_ed25519
-Your public key has been saved in /Users/brunj7/.ssh/id_ed25519.pub
+Your identification has been saved in /Users/<your-username>/.ssh/id_ed25519
+Your public key has been saved in /Users/<your-username>/.ssh/id_ed25519.pub
 The key fingerprint is:
 SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o vlad@tran.sylvan.ia
 The key's randomart image is:
@@ -160,10 +160,10 @@ ls -al ~/.ssh
 ```
 
 ```bash
-drwxr-xr-x 1 brunj7  staff 197121  Oct 23  13:14 ./
-drwxr-xr-x 1 brunj7  staff 197121  Mar 11  09:21 ../
--rw------- 1 brunj7  staff    464  Apr 21  2023 id_ed25519
--rw-r--r-- 1 brunj7  staff    103  Apr 21  2023 id_ed25519.pub
+drwxr-xr-x 1 <your-username>  staff 197121  Oct 23  13:14 ./
+drwxr-xr-x 1 <your-username>  staff 197121  Mar 11  09:21 ../
+-rw------- 1 <your-username>  staff    464  Apr 21  2023 id_ed25519
+-rw-r--r-- 1 <your-username>  staff    103  Apr 21  2023 id_ed25519.pub
 ```
 :::
 
